@@ -1,0 +1,74 @@
+# Publica uma PRÉVIA do site no GitHub Pages (https://maxcanoas.github.io/bruckerCareSite/).
+# Usa o build de prévia (aceita lorem ipsum), ajusta os caminhos para a subpasta
+# /bruckerCareSite e marca as páginas como noindex, para não competir com o domínio final.
+name: Publicar prévia no GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Build de prévia
+        env:
+          ALLOW_PLACEHOLDERS: "1"
+        run: npx astro build --site https://maxcanoas.github.io --base /bruckerCareSite
+      - name: Ajustar caminhos para a subpasta e marcar noindex
+        run: |
+          cat > /tmp/fix.cjs <<'JS'
+          const fs = require("fs"), path = require("path");
+          const B = "/bruckerCareSite";
+          const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => { const f = path.join(d, e.name); return e.isDirectory() ? walk(f) : [f]; });
+          const fix = (p) => (p.startsWith("/") && !p.startsWith("//") && !/^\/bruckerCareSite(?=$|[\/#?])/.test(p) ? B + p : p);
+          for (const f of walk("dist")) {
+            if (!/\.(html|css|xml|txt|svg)$/.test(f)) continue;
+            let s = fs.readFileSync(f, "utf8");
+            s = s.replace(/\b(href|src|action|poster)=(["'])(\/[^"']*)\2/g, (m, a, q, p) => `${a}=${q}${fix(p)}${q}`);
+            s = s.replace(/\bsrcset=(["'])([^"']*)\1/g, (m, q, v) => `srcset=${q}${v.split(",").map((x) => x.replace(/^(\s*)(\S+)/, (mm, sp, u) => sp + fix(u))).join(",")}${q}`);
+            s = s.replace(/url\((["']?)(\/[^)"']*)\1\)/g, (m, q, p) => `url(${q}${fix(p)}${q})`);
+            if (f.endsWith(".html")) {
+              const page = "/" + path.relative("dist", f).split(path.sep).join("/").replace(/(^|\/)index\.html$/, "").replace(/\.html$/, "");
+              const here = (B + page).replace(/\/$/, "");
+              s = s.replace(/<a\b[^>]*>/g, (tag) => {
+                if (tag.includes("aria-current") || !/class="(header__logo|header__link|menu__link)[" ]/.test(tag)) return tag;
+                const h = (tag.match(/href="([^"]*)"/) || [])[1];
+                return h && h.replace(/\/$/, "") === here ? tag.replace(/>$/, ' aria-current="page">') : tag;
+              });
+              if (!/<meta name="?robots/.test(s)) s = s.replace(/<head([^>]*)>/i, '<head$1><meta name="robots" content="noindex, nofollow">');
+            }
+            fs.writeFileSync(f, s);
+          }
+          JS
+          node /tmp/fix.cjs
+          printf 'User-agent: *\nDisallow: /\n' > dist/robots.txt
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
