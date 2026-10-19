@@ -1,0 +1,296 @@
+---
+// Política de privacidade (LGPD). Coluna única de leitura, com índice no topo.
+// Razão social, CNPJ, encarregado e prazos de guarda esperam dados da cliente.
+// Recomendado: revisão jurídica antes de publicar (docs/pendencias.md).
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { company } from "../data/empresa";
+import { breadcrumbSchema } from "../lib/schema";
+
+const updated = "18 de outubro de 2026";
+
+const sections = [
+  { id: "quem-trata", title: "Quem cuida dos seus dados" },
+  { id: "dados", title: "Quais dados tratamos" },
+  { id: "finalidades", title: "Para que usamos" },
+  { id: "cookies", title: "Cookies e medição de audiência" },
+  { id: "compartilhamento", title: "Com quem compartilhamos" },
+  { id: "guarda", title: "Por quanto tempo guardamos" },
+  { id: "direitos", title: "Os seus direitos" },
+  { id: "contato", title: "Como falar com a gente" },
+  { id: "mudancas", title: "Mudanças nesta política" },
+];
+---
+
+<BaseLayout
+  schema={[breadcrumbSchema("Política de privacidade", "/politica-de-privacidade")]}
+  title="Política de privacidade | BruckerCare"
+  description="Como a BruckerCare trata os seus dados pessoais no site, no WhatsApp e na medição de audiência, de acordo com a LGPD."
+>
+  <article class="policy tone-paper" aria-labelledby="policy-title">
+    <div class="wrap policy__wrap">
+      <header class="policy__head">
+        <span class="label">privacidade</span>
+        <h1 id="policy-title" class="policy__title heading">Política de <em>privacidade</em></h1>
+        <p class="policy__lead t-lead">
+          Esta página explica, em linguagem simples, quais dados pessoais a {company.name} trata quando você usa o site ou
+          fala com a gente, para que usamos e como você pode exercer os seus direitos, de acordo com a Lei Geral de
+          Proteção de Dados (Lei 13.709/2018).
+        </p>
+        <p class="policy__updated t-small">Última atualização: {updated}.</p>
+      </header>
+
+      <nav class="policy__toc" aria-labelledby="policy-toc-title">
+        <p class="policy__toc-title" id="policy-toc-title">Nesta página</p>
+        <ol class="policy__toc-list">
+          {sections.map((section) => <li><a href={`#${section.id}`}>{section.title}</a></li>)}
+        </ol>
+      </nav>
+
+      <div class="policy__body prose">
+        <section id="quem-trata" aria-labelledby="quem-trata-t">
+          <h2 id="quem-trata-t">1. Quem cuida dos seus dados</h2>
+          <p>
+            A {company.name} ({company.legalName}, {company.taxId}), de {company.city}, {company.state}, é a responsável
+            (controladora) pelos dados pessoais tratados neste site e no atendimento.
+          </p>
+          <p>Encarregado pelo tratamento de dados: lorem ipsum dolor sit amet, contato lorem ipsum.</p>
+        </section>
+
+        <section id="dados" aria-labelledby="dados-t">
+          <h2 id="dados-t">2. Quais dados tratamos</h2>
+          <h3>Conversa pelo WhatsApp</h3>
+          <p>
+            Quando você chama a {company.name} no WhatsApp, recebemos o seu número, o nome do seu perfil e o que você
+            escrever. Para combinar a locação, também podemos pedir o endereço de entrega e o período em que você precisa
+            da poltrona.
+          </p>
+          <h3>Formulário de contato</h3>
+          <p>
+            O formulário da página Contato não envia nada para o site e não guarda nenhum dado. Ele apenas junta o que
+            você preencheu (nome, cidade, data e mensagem) e abre o WhatsApp no seu aparelho com a mensagem pronta. Você
+            confere e decide se envia.
+          </p>
+          <p>
+            O site não pede informações sobre a sua saúde ou sobre a sua cirurgia, e você não precisa contá-las para
+            alugar a poltrona.
+          </p>
+          <h3>Navegação no site</h3>
+          <p>
+            Só se você aceitar os cookies de análise, o Google Analytics registra como o site é usado: páginas visitadas,
+            tempo de visita, tipo de aparelho e navegador, cidade aproximada e de onde você chegou ao site. Esses dados
+            são vistos em conjunto, não para identificar você.
+          </p>
+          <h3>Dados técnicos de acesso</h3>
+          <p>
+            Como em qualquer site, os serviços de hospedagem e de rede podem registrar dados técnicos de cada acesso, como
+            endereço IP, navegador, data e hora, para manter o site funcionando e seguro.
+          </p>
+        </section>
+
+        <section id="finalidades" aria-labelledby="finalidades-t">
+          <h2 id="finalidades-t">3. Para que usamos</h2>
+          <ul>
+            <li>
+              <strong>Atender você e fazer a locação</strong> (responder dúvidas, combinar período, entrega e retirada):
+              procedimentos e execução do contrato que você pediu (art. 7º, V, da LGPD).
+            </li>
+            <li>
+              <strong>Entender como o site é usado</strong>, para melhorar o conteúdo: com o seu consentimento (art. 7º,
+              I). Você pode retirar o consentimento quando quiser.
+            </li>
+            <li>
+              <strong>Manter o site seguro e funcionando</strong>: legítimo interesse (art. 7º, IX).
+            </li>
+          </ul>
+          <p>Não vendemos dados pessoais e não usamos os seus dados para publicidade.</p>
+        </section>
+
+        <section id="cookies" aria-labelledby="cookies-t">
+          <h2 id="cookies-t">4. Cookies e medição de audiência</h2>
+          <p>
+            O site só usa cookies de análise, do Google Analytics 4, e só depois que você clica em "Aceitar" no aviso de
+            cookies. Se você clicar em "Recusar", o Google Analytics não é carregado.
+          </p>
+          <p>
+            Os cookies do Google Analytics se chamam <code>_ga</code> e <code>_ga_</code> seguido do código do site. Pelas
+            regras do Google, eles duram até 2 anos, a menos que você os apague antes no seu navegador.
+          </p>
+          <p>
+            A sua escolha (aceitar ou recusar) fica guardada no próprio navegador por 12 meses, para o aviso não aparecer
+            em toda visita. Para mudar de ideia, use o botão "Preferências de cookies" no rodapé de qualquer página.
+          </p>
+        </section>
+
+        <section id="compartilhamento" aria-labelledby="compartilhamento-t">
+          <h2 id="compartilhamento-t">5. Com quem compartilhamos</h2>
+          <ul>
+            <li>
+              <strong>Google</strong>, pelo Google Analytics, só se você aceitar os cookies. O Google pode tratar esses
+              dados fora do Brasil, com as garantias previstas na LGPD.
+            </li>
+            <li>
+              <strong>WhatsApp (Meta)</strong>, quando você fala com a gente por lá. A conversa também segue os termos e a
+              política de privacidade do WhatsApp.
+            </li>
+            <li>
+              <strong>HostGator e Cloudflare</strong>, que hospedam o site e entregam as páginas com segurança.
+            </li>
+          </ul>
+          <p>Fora isso, só compartilhamos dados se a lei ou uma autoridade exigir.</p>
+        </section>
+
+        <section id="guarda" aria-labelledby="guarda-t">
+          <h2 id="guarda-t">6. Por quanto tempo guardamos</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua.
+          </p>
+          <p>Depois desse prazo, os dados são apagados, a menos que a lei obrigue a guardá-los por mais tempo.</p>
+        </section>
+
+        <section id="direitos" aria-labelledby="direitos-t">
+          <h2 id="direitos-t">7. Os seus direitos</h2>
+          <p>Pela LGPD (art. 18), você pode pedir, a qualquer momento:</p>
+          <ul>
+            <li>a confirmação de que tratamos dados seus e o acesso a eles;</li>
+            <li>a correção de dados incompletos, inexatos ou desatualizados;</li>
+            <li>a anonimização, o bloqueio ou a eliminação de dados desnecessários ou tratados em desacordo com a lei;</li>
+            <li>a portabilidade dos dados para outro fornecedor;</li>
+            <li>a eliminação dos dados tratados com o seu consentimento;</li>
+            <li>a informação sobre com quem compartilhamos os seus dados;</li>
+            <li>a informação sobre a possibilidade de não dar o consentimento e o que acontece nesse caso;</li>
+            <li>a revogação do consentimento.</li>
+          </ul>
+          <p>Você também pode reclamar à Autoridade Nacional de Proteção de Dados (ANPD).</p>
+        </section>
+
+        <section id="contato" aria-labelledby="contato-t">
+          <h2 id="contato-t">8. Como falar com a gente</h2>
+          <p>
+            Para exercer os seus direitos ou tirar dúvidas sobre esta política, escreva para
+            <a class="link" href={`mailto:${company.email}`}>{company.email}</a>. Respondemos pelo mesmo canal.
+          </p>
+        </section>
+
+        <section id="mudancas" aria-labelledby="mudancas-t">
+          <h2 id="mudancas-t">9. Mudanças nesta política</h2>
+          <p>
+            Esta política pode mudar quando o site ou o atendimento mudarem. A data da última atualização fica sempre no
+            topo da página.
+          </p>
+        </section>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .policy {
+    padding-block: calc(var(--header-h) + 56px) 120px;
+  }
+
+  .policy__wrap {
+    max-width: 62ch;
+  }
+
+  @media (min-width: 1024px) {
+    .policy {
+      padding-block: calc(var(--header-h) + 96px) 168px;
+    }
+
+    .policy__wrap {
+      margin-left: max(var(--margin), (100% - var(--max)) / 2 + (var(--max) - 62ch) / 6);
+    }
+  }
+
+  .policy__title {
+    margin-top: 22px;
+    font-size: clamp(2.25rem, 1.6rem + 2.8vw, 4rem);
+    line-height: 1.04;
+    letter-spacing: -0.038em;
+  }
+
+  .policy__lead {
+    margin-top: 20px;
+    color: var(--fg-soft);
+  }
+
+  .policy__updated {
+    margin-top: 16px;
+    color: var(--fg-soft);
+  }
+
+  .policy__toc {
+    margin-top: 40px;
+    padding: 24px 26px;
+    border-radius: var(--r-l);
+    background: var(--c-linen);
+  }
+
+  .policy__toc-title {
+    color: var(--heading);
+    font-weight: 500;
+  }
+
+  .policy__toc-list {
+    margin-top: 10px;
+    padding-left: 1.4em;
+    list-style: decimal;
+  }
+
+  .policy__toc-list li::marker {
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .policy__toc-list li + li {
+    margin-top: 4px;
+  }
+
+  .policy__toc-list a {
+    color: var(--heading);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+
+  .policy__body {
+    margin-top: 56px;
+  }
+
+  .policy__body section {
+    scroll-margin-top: calc(var(--header-h) + 24px);
+  }
+
+  .policy__body section + section {
+    margin-top: 48px;
+  }
+
+  .policy__body h2 {
+    color: var(--heading);
+    font-size: var(--fs-h3);
+    font-weight: 450;
+    line-height: 1.3;
+    letter-spacing: -0.012em;
+  }
+
+  .policy__body h3 {
+    margin-top: 24px;
+    color: var(--heading);
+    font-size: 1.0625rem;
+    font-weight: 500;
+  }
+
+  .policy__body ul {
+    padding-left: 1.2em;
+  }
+
+  .policy__body li + li {
+    margin-top: 8px;
+  }
+
+  .policy__body code {
+    font-family: ui-monospace, Consolas, monospace;
+    font-size: 0.9em;
+  }
+</style>

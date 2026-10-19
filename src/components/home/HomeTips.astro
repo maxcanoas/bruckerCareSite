@@ -1,0 +1,193 @@
+---
+// Preparar a casa (posts 6, 11 e 13). Papel.
+// A nota da equipe médica vem logo depois do título. As dicas não são uma
+// sequência, então ficam sem número: cada uma ganha a marca de "feito", como
+// numa lista de preparação. No desktop a foto fica presa ao lado da lista.
+import Frame from "../Frame.astro";
+
+const tips = [
+  {
+    title: "Organize o espaço de recuperação",
+    text: "Escolha um local confortável e de fácil acesso para os primeiros dias, com os itens de uso frequente por perto.",
+  },
+  {
+    title: "Deixe o essencial ao alcance",
+    text: "Celular, água, carregador, controles e os medicamentos conforme a orientação médica podem ficar perto do local de descanso.",
+  },
+  {
+    title: "Facilite a circulação pela casa",
+    text: "Antes da cirurgia, observe se há tapetes soltos, objetos no caminho ou móveis que dificultem a passagem.",
+  },
+  {
+    title: "Pense nos momentos de descanso",
+    text: "Ter um lugar adequado para sentar, descansar e mudar de posição faz diferença. Alguns equipamentos podem ser recomendados pela equipe que acompanha o seu caso.",
+  },
+  {
+    title: "Combine a rotina com quem estará por perto",
+    text: "Se alguém vai acompanhar a recuperação, conversem antes sobre alimentação, deslocamentos e horários. Isso traz mais tranquilidade para todos.",
+  },
+];
+---
+
+<section class="tips tone-paper sheet" aria-labelledby="tips-title">
+  <div class="grid tips__grid">
+    <div class="tips__aside">
+      <Frame
+        class="tips__photo"
+        name="preparo-mesa-lateral"
+        alt="Mesa lateral redonda de madeira ao lado de uma poltrona marrom, com jarra e copo de água, celular, carregador, controle remoto, um livro e óculos."
+        widths={[400, 600, 800, 928]}
+        sizes="(min-width: 1024px) 34vw, 92vw"
+        ratio="4 / 5"
+        reveal
+      />
+    </div>
+
+    <div class="tips__main">
+      <span class="label" data-reveal="rise">em casa</span>
+      <h2 id="tips-title" class="heading t-h2" data-reveal="rise">
+        O que preparar em casa <em>antes de uma cirurgia</em>?
+      </h2>
+      <p class="tips__note" data-reveal="rise" style="--d:1">
+        Cada recuperação tem o seu tempo e segue, acima de tudo, as orientações da sua equipe médica. As dicas abaixo são
+        sobre a casa, não sobre o tratamento.
+      </p>
+
+      <ul class="tips__list">
+        {
+          tips.map((tip) => (
+            <li class="tips__item">
+              <span class="tips__rule" data-reveal="line" aria-hidden="true" />
+              <span class="tips__check" aria-hidden="true" />
+              <div>
+                <h3 class="tips__title">{tip.title}</h3>
+                <p>{tip.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .tips {
+    padding-block: 104px 120px;
+  }
+
+  .tips__main .heading {
+    margin-top: 20px;
+  }
+
+  .tips__aside {
+    margin-bottom: 48px;
+  }
+
+  /* A nota da equipe médica: um cartão de linho, discreto e sempre à vista. */
+  .tips__note {
+    max-width: 54ch;
+    margin-top: 28px;
+    padding: 18px 20px;
+    border-radius: var(--r-m);
+    background: var(--c-linen);
+    color: var(--c-ink);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .tips__list {
+    margin-top: 36px;
+  }
+
+  .tips__item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 22px minmax(0, 1fr);
+    gap: 16px;
+    padding-block: 24px;
+  }
+
+  .tips__item:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .tips__rule {
+    position: absolute;
+    inset: 0 0 auto;
+    height: 1px;
+    background: var(--line);
+  }
+
+  /* Marca de feito: um anel caramelo fino com o visto dentro */
+  .tips__check {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    margin-top: 2px;
+    border: 1px solid var(--c-caramel);
+    border-radius: 50%;
+  }
+
+  .tips__check::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 7px;
+    width: 5px;
+    height: 9px;
+    border-right: 1.5px solid var(--c-tobacco);
+    border-bottom: 1.5px solid var(--c-tobacco);
+    rotate: 40deg;
+  }
+
+  .tips__title {
+    color: var(--heading);
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
+
+  .tips__item p {
+    max-width: 54ch;
+    margin-top: 6px;
+    color: var(--fg-soft);
+  }
+
+  @media (min-width: 768px) {
+    .tips :global(.tips__photo) {
+      width: min(100%, 520px);
+    }
+  }
+
+  /* ---------- Desktop: a foto fica presa ao lado da lista ---------- */
+
+  @media (min-width: 1024px) {
+    .tips {
+      padding-block: 168px 184px;
+    }
+
+    .tips__aside {
+      grid-column: col 1 / span 5;
+      grid-row: 1;
+      align-self: start;
+      position: sticky;
+      top: calc(var(--header-h) + 40px);
+      margin-bottom: 0;
+    }
+
+    .tips :global(.tips__photo) {
+      width: min(100%, calc((100svh - var(--header-h) - 80px) * 0.8));
+    }
+
+    .tips__main {
+      grid-column: col 7 / span 6;
+      grid-row: 1;
+    }
+
+    .tips__title {
+      font-size: 1.1875rem;
+    }
+  }
+</style>

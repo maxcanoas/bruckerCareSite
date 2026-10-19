@@ -1,0 +1,365 @@
+---
+// Quem somos (posts 1, 2, 7, 14 e 16). Abertura só de texto grande no papel,
+// a história da Pâmela com a foto real (presa ao lado do texto no desktop),
+// a forma de trabalhar no linho e o fechamento.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Frame from "../components/Frame.astro";
+import Closing from "../components/sections/Closing.astro";
+import LogoIcon from "../assets/brand/logo-icon.svg";
+import { company } from "../data/empresa";
+import { breadcrumbSchema } from "../lib/schema";
+
+const values = ["Conforto.", "Praticidade.", "Ambiente.", "Acolhimento."];
+
+const principles = [
+  {
+    title: "Antes de cada entrega, existe um processo.",
+    text: `Higienização, sanitização, inspeção e preparação. Para a ${company.name}, esses procedimentos não são apenas etapas operacionais. São parte do padrão que escolhemos oferecer em cada atendimento.`,
+  },
+  {
+    title: "Segurança e acolhimento não são opostos.",
+    text: "É possível cuidar com atenção aos detalhes sem deixar de lado o conforto, a tranquilidade e a forma como cada pessoa se sente.",
+  },
+  {
+    title: "A poltrona é o equipamento. O cuidado é o nosso trabalho.",
+    text: "Por trás de cada locação, existem etapas de preparação, organização e atenção para que o equipamento esteja pronto para chegar até você.",
+  },
+];
+---
+
+<BaseLayout
+  schema={[breadcrumbSchema("Quem somos", "/quem-somos")]}
+  title="Quem somos | BruckerCare, poltronas para pós-operatório"
+  description="A BruckerCare nasceu da experiência de recuperação da fundadora, Pâmela Zweibrucker. Aluguel de poltronas elétricas para o pós-operatório em Canoas e região."
+>
+  <section class="about-intro tone-paper" aria-labelledby="about-title">
+    <LogoIcon class="about-intro__mark" aria-hidden="true" focusable="false" />
+    <div class="grid about-intro__grid">
+      <span class="label">quem somos</span>
+      <h1 id="about-title" class="about-intro__title heading">
+        A {company.name} nasceu de uma <em>experiência pessoal</em>.
+      </h1>
+      <p class="about-intro__lead t-lead">
+        Durante a própria recuperação, Pâmela percebeu como movimentos simples e momentos do dia a dia podiam ganhar uma
+        nova dimensão quando o corpo está se recuperando. E percebeu também que faltava um serviço que olhasse para esse
+        período com mais cuidado.
+      </p>
+    </div>
+  </section>
+
+  <section class="about-story tone-paper" aria-labelledby="story-title">
+    <div class="grid about-story__grid">
+      <figure class="about-story__figure">
+        <Frame
+          name="pamela-zweibrucker-recorte"
+          alt="Pâmela Zweibrucker, fundadora da BruckerCare, sentada numa poltrona de couro caramelo, de blusa preta e óculos, sorrindo para a câmera."
+          widths={[400, 560]}
+          sizes="(min-width: 1024px) 34vw, 86vw"
+          ratio="4 / 5"
+          pos="40% 30%"
+          reveal
+        />
+        <figcaption class="t-small">{company.founder}, fundadora da {company.name}.</figcaption>
+      </figure>
+
+      <div class="about-story__text">
+        <h2 id="story-title" class="heading t-h2">Prazer, eu sou <em>a Pâmela</em>.</h2>
+        <div class="prose">
+          <p>
+            Fundadora da {company.name} e formanda de Biomedicina. Minha formação me ensinou a olhar para o cuidado com
+            atenção, responsabilidade e respeito aos detalhes.
+          </p>
+          <p>
+            Mas foi a minha própria experiência com a recuperação que me fez perceber algo: há muito mais para cuidar além
+            do procedimento.
+          </p>
+        </div>
+        <ul class="about-story__values" aria-label="O que importa na recuperação">
+          {values.map((value, i) => <li data-reveal="rise" style={`--d:${i}`}>{value}</li>)}
+        </ul>
+        <div class="prose">
+          <p>
+            Foi dessa experiência que nasceu a {company.name}: uma marca criada para oferecer mais conforto, praticidade e
+            acolhimento a quem está vivendo esse momento ou acompanhando alguém nele.
+          </p>
+          <p class="about-story__close">Porque cuidar também é entender o que o outro está vivendo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-care tone-linen sheet" aria-labelledby="care-title">
+    <div class="grid about-care__grid">
+      <div class="about-care__head">
+        <span class="label">como trabalhamos</span>
+        <h2 id="care-title" class="heading t-display">Cuidar também é <em>preparar</em>.</h2>
+        <p class="about-care__intro t-lead">
+          Uma recuperação pede tempo. Pede cuidado. E pede um ambiente preparado para esse momento. A {company.name} aluga
+          poltronas elétricas para a recuperação pós-operatória, com uma atenção que começa muito antes da entrega e
+          continua em cada detalhe.
+        </p>
+      </div>
+
+      <ul class="about-care__list">
+        {
+          principles.map((item, i) => (
+            <li class="about-care__item">
+              <span class="about-care__rule" data-reveal="line" aria-hidden="true" style={`--d:${i}`} />
+              <h3 class="about-care__title">{item.title}</h3>
+              <p>{item.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="about-care__note">
+        A {company.name} não dá orientação clínica. As orientações sobre a sua recuperação vêm sempre da sua equipe médica.
+      </p>
+    </div>
+  </section>
+
+  <Closing placement="aboutClosing" />
+</BaseLayout>
+
+<style>
+  /* ---------- Abertura: só texto grande ---------- */
+
+  .about-intro {
+    position: relative;
+    overflow: clip;
+    padding-block: calc(var(--header-h) + 72px) 56px;
+  }
+
+  .about-intro__mark {
+    position: absolute;
+    top: calc(var(--header-h) + 8px);
+    right: -34vw;
+    width: 80vw;
+    height: auto;
+    opacity: 0.08;
+    pointer-events: none;
+  }
+
+  .about-intro__grid {
+    position: relative;
+  }
+
+  .about-intro__title {
+    margin-top: 24px;
+    font-size: clamp(2.5rem, 1.55rem + 4.2vw, 5.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.042em;
+  }
+
+  .about-intro__lead {
+    margin-top: 32px;
+    max-width: 50ch;
+    color: var(--fg-soft);
+  }
+
+  @media (min-width: 1024px) {
+    .about-intro {
+      padding-block: calc(var(--header-h) + 128px) 96px;
+    }
+
+    .about-intro__mark {
+      right: -8vw;
+      width: min(48vw, 760px);
+    }
+
+    .about-intro__title {
+      grid-column: col 1 / span 10;
+    }
+
+    .about-intro__lead {
+      grid-column: col 1 / span 6;
+      margin-top: 48px;
+    }
+  }
+
+  /* ---------- A história, com a foto ---------- */
+
+  .about-story {
+    padding-block: 32px 112px;
+  }
+
+  .about-story__figure {
+    width: min(100%, 440px);
+  }
+
+  .about-story__figure figcaption {
+    margin-top: 14px;
+    color: var(--fg-soft);
+  }
+
+  .about-story__text {
+    margin-top: 56px;
+  }
+
+  .about-story__text > * + * {
+    margin-top: 28px;
+  }
+
+  .about-story__text .prose {
+    color: var(--fg-soft);
+  }
+
+  .about-story__values {
+    display: grid;
+    gap: 2px;
+  }
+
+  .about-story__values li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--accent);
+    font-size: var(--fs-h2);
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+  }
+
+  .about-story__values li::before {
+    content: "";
+    flex: none;
+    width: 9px;
+    height: 9px;
+    border: 1.25px solid var(--c-caramel);
+    border-radius: 50%;
+  }
+
+  .about-story__close {
+    color: var(--heading);
+    font-weight: 500;
+  }
+
+  @media (min-width: 768px) {
+    .about-story__figure {
+      grid-column: col 1 / span 4;
+      grid-row: 1;
+      align-self: start;
+      position: sticky;
+      top: calc(var(--header-h) + 40px);
+    }
+
+    .about-story__text {
+      grid-column: col 5 / span 4;
+      grid-row: 1;
+      margin-top: 0;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .about-story {
+      padding-block: 48px 176px;
+    }
+
+    .about-story__figure {
+      grid-column: col 1 / span 5;
+    }
+
+    .about-story__text {
+      grid-column: col 7 / span 6;
+      padding-top: 24px;
+    }
+  }
+
+  /* ---------- Como trabalhamos ---------- */
+
+  .about-care {
+    padding-block: 104px 120px;
+  }
+
+  .about-care__head > * + * {
+    margin-top: 20px;
+  }
+
+  .about-care__head .heading {
+    margin-top: 22px;
+  }
+
+  .about-care__intro {
+    max-width: 56ch;
+    color: var(--fg-soft);
+  }
+
+  .about-care__list {
+    margin-top: 56px;
+  }
+
+  .about-care__item {
+    position: relative;
+    display: grid;
+    gap: 12px;
+    padding-block: 32px;
+  }
+
+  .about-care__item:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .about-care__rule {
+    position: absolute;
+    inset: 0 0 auto;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .about-care__title {
+    color: var(--heading);
+    font-size: var(--fs-h3);
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.012em;
+    text-wrap: balance;
+  }
+
+  .about-care__item p {
+    max-width: 52ch;
+    color: var(--fg-soft);
+  }
+
+  .about-care__note {
+    margin-top: 40px;
+    max-width: 60ch;
+    padding: 18px 20px;
+    border-radius: var(--r-m);
+    background: var(--c-shell);
+    color: var(--c-ink);
+    font-size: 0.9375rem;
+  }
+
+  @media (min-width: 1024px) {
+    .about-care {
+      padding-block: 160px 176px;
+    }
+
+    .about-care__head {
+      grid-column: col 1 / span 8;
+    }
+
+    .about-care__list {
+      grid-column: col 1 / span 12;
+      margin-top: 80px;
+    }
+
+    .about-care__item {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      column-gap: var(--gutter);
+      padding-block: 40px;
+    }
+
+    .about-care__title {
+      grid-column: 1 / span 5;
+    }
+
+    .about-care__item p {
+      grid-column: 7 / span 6;
+    }
+
+    .about-care__note {
+      grid-column: col 7 / span 6;
+    }
+  }
+</style>

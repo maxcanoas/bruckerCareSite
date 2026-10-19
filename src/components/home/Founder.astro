@@ -1,0 +1,147 @@
+---
+// Quem está por trás (post 2). Verde profundo, uma seção de pausa.
+// Foto real da Pâmela, recortada sem o logo aplicado (npm run images), e uma
+// frase dela em destaque. O ícone da marca, em traço, fica de marca d'água.
+import LogoIcon from "../../assets/brand/logo-icon.svg";
+import Frame from "../Frame.astro";
+import { company } from "../../data/empresa";
+---
+
+<section class="founder tone-dark sheet" aria-labelledby="founder-title">
+  <LogoIcon class="founder__mark" aria-hidden="true" focusable="false" />
+  <div class="grid founder__grid">
+    <Frame
+      class="founder__photo"
+      name="pamela-zweibrucker-recorte"
+      alt="Pâmela Zweibrucker, fundadora da BruckerCare, sentada numa poltrona de couro caramelo, de blusa preta e óculos, sorrindo para a câmera."
+      widths={[400, 560]}
+      sizes="(min-width: 1024px) 34vw, 80vw"
+      ratio="4 / 5"
+      pos="40% 30%"
+      parallax={-8}
+      reveal
+    />
+
+    <div class="founder__text">
+      <span class="label" data-reveal="rise">quem está por trás</span>
+      <h2 id="founder-title" class="heading t-h2" data-reveal="rise">Prazer, eu sou <em>a Pâmela</em>.</h2>
+      <p data-reveal="rise" style="--d:1">
+        Fundadora da {company.name} e formanda de Biomedicina. Minha formação me ensinou a olhar para o cuidado com
+        atenção, responsabilidade e respeito aos detalhes.
+      </p>
+      <p class="founder__quote" data-reveal="rise" style="--d:2">
+        Foi a minha própria experiência com a recuperação que me fez perceber: há muito mais para cuidar além do
+        procedimento.
+      </p>
+      <p data-reveal="rise" style="--d:2">Foi dessa experiência que nasceu a {company.name}.</p>
+      <a class="link founder__link" href="/quem-somos">Conhecer a nossa história</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .founder {
+    position: relative;
+    overflow: clip;
+    padding-block: 104px 120px;
+  }
+
+  /* Marca d'água: o ícone da marca, enorme e cortado pela borda, como na capa do post 8. */
+  .founder__mark {
+    position: absolute;
+    right: -30vw;
+    bottom: -16vw;
+    width: 86vw;
+    height: auto;
+    opacity: 0.07;
+    pointer-events: none;
+  }
+
+  .founder__grid {
+    position: relative;
+  }
+
+  .founder :global(.founder__photo) {
+    grid-column: content;
+    width: min(100%, 420px);
+  }
+
+  .founder__text {
+    margin-top: 44px;
+  }
+
+  .founder__text > * + * {
+    margin-top: 18px;
+  }
+
+  .founder__text .heading {
+    margin-top: 20px;
+  }
+
+  .founder__text p {
+    max-width: 46ch;
+    color: var(--fg-soft);
+  }
+
+  .founder__text .founder__quote {
+    max-width: 30ch;
+    padding-block: 10px;
+    color: var(--c-caramel);
+    font-size: var(--fs-h3);
+    font-weight: 300;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+
+  .founder__link {
+    margin-top: 28px;
+  }
+
+  @media (min-width: 768px) {
+    .founder :global(.founder__photo) {
+      grid-column: col 1 / span 4;
+      grid-row: 1;
+      align-self: center;
+    }
+
+    .founder__text {
+      grid-column: col 5 / span 4;
+      grid-row: 1;
+      align-self: center;
+      margin-top: 0;
+    }
+
+    .founder__mark {
+      right: -18vw;
+      bottom: auto;
+      top: 50%;
+      width: min(64vw, 760px);
+      translate: 0 -50%;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .founder {
+      padding-block: 168px 184px;
+    }
+
+    .founder :global(.founder__photo) {
+      grid-column: col 1 / span 5;
+      width: min(100%, 440px);
+    }
+
+    .founder__text {
+      grid-column: col 7 / span 5;
+    }
+
+    .founder__text .founder__quote {
+      font-size: 1.625rem;
+      line-height: 1.38;
+    }
+
+    .founder__mark {
+      right: -10vw;
+      width: min(52vw, 820px);
+    }
+  }
+</style>

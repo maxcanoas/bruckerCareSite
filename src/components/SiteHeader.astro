@@ -1,0 +1,443 @@
+---
+import LogoHorizontal from "../assets/brand/logo-horizontal.svg";
+import WhatsAppButton from "./WhatsAppButton.astro";
+import { company } from "../data/empresa";
+import { footerNav, mainNav } from "../data/navegacao";
+
+const path = Astro.url.pathname.replace(/(\.html|\/)$/, "") || "/";
+const current = (href: string) => (path === href ? "page" : undefined);
+---
+
+<header class="header" data-header>
+  <div class="header__bar">
+    <a class="header__logo" href="/" aria-current={current("/")}>
+      <LogoHorizontal class="header__logo-svg" aria-hidden="true" focusable="false" />
+      <span class="sr-only">BruckerCare, página inicial</span>
+    </a>
+
+    <nav class="header__nav" aria-label="Principal">
+      <ul class="header__list">
+        {
+          mainNav.map((item) => (
+            <li>
+              <a class="header__link" href={item.href} aria-current={current(item.href)}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <WhatsAppButton class="header__cta" placement="header" label="Chamar no WhatsApp" size="small" />
+
+    <button class="header__menu" type="button" popovertarget="menu">
+      <span class="header__menu-icon" aria-hidden="true"></span>
+      Menu
+    </button>
+  </div>
+</header>
+
+<div id="menu" class="menu tone-dark" popover aria-label="Menu">
+  <div class="menu__top">
+    <span class="menu__logo" aria-hidden="true">
+      <LogoHorizontal class="header__logo-svg" focusable="false" />
+    </span>
+    <button class="menu__close" type="button" popovertarget="menu" popovertargetaction="hide">
+      Fechar
+      <span class="menu__close-icon" aria-hidden="true"></span>
+    </button>
+  </div>
+  <nav aria-label="Menu do celular">
+    <ul class="menu__list">
+      {
+        footerNav.map((item, i) => (
+          <li style={`--i:${i}`}>
+            <a class="menu__link" href={item.href} aria-current={current(item.href)}>
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+  <div class="menu__foot">
+    <WhatsAppButton class="menu__cta" placement="menu" label="Chamar no WhatsApp" />
+    <p class="menu__contact">
+      {company.phone.display} · {company.instagram.handle}<br />
+      Entrega e retirada em casa em {company.serviceArea}.
+    </p>
+  </div>
+</div>
+
+<style>
+  .header {
+    --focus: var(--c-tobacco);
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 50;
+    color: var(--c-brand);
+    transition: color var(--t-fast) var(--ease);
+  }
+
+  /* O fundo de vidro aparece ao rolar; fica numa camada própria para entrar devagar. */
+  .header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-bottom: 1px solid var(--line-light);
+    background: rgb(248 245 240 / 0.8);
+    -webkit-backdrop-filter: blur(16px) saturate(1.15);
+    backdrop-filter: blur(16px) saturate(1.15);
+    opacity: 0;
+    transition:
+      opacity var(--t-mid) var(--ease),
+      background-color var(--t-fast) var(--ease),
+      border-color var(--t-fast) var(--ease);
+  }
+
+  /* Sem JavaScript o cabeçalho fica sempre com fundo. */
+  :global(html:not(.js)) .header::before,
+  .header.is-scrolled::before {
+    opacity: 1;
+  }
+
+  /* Sobre uma seção verde, o cabeçalho acompanha a luz dela. */
+  .header[data-tone="dark"] {
+    --focus: var(--c-caramel);
+    color: var(--c-cream);
+  }
+
+  .header[data-tone="dark"]::before {
+    border-bottom-color: var(--line-dark);
+    background: rgb(6 28 25 / 0.74);
+  }
+
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .header::before {
+      background: rgb(248 245 240 / 0.97);
+    }
+
+    .header[data-tone="dark"]::before {
+      background: rgb(6 28 25 / 0.97);
+    }
+  }
+
+  .header__bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    width: min(100% - 2 * var(--margin), var(--max));
+    height: var(--header-h);
+    margin-inline: auto;
+  }
+
+  .header__logo {
+    flex: none;
+    display: block;
+    margin-right: auto;
+    padding-block: 8px;
+    color: inherit;
+  }
+
+  .header__logo-svg {
+    width: 132px;
+    height: auto;
+  }
+
+  /* O nome do logo segue a cor do cabeçalho (versões 01 e 04); o ícone fica caramelo. */
+  .header__logo-svg :global(path:not([fill="#c48e52"])) {
+    fill: currentColor;
+    transition: fill var(--t-fast) var(--ease);
+  }
+
+  .header__nav {
+    display: none;
+  }
+
+  .header__list {
+    display: flex;
+    gap: 30px;
+  }
+
+  .header__link {
+    position: relative;
+    display: block;
+    padding-block: 12px;
+    font-size: 0.9375rem;
+    font-weight: 450;
+    line-height: 1.2;
+    text-decoration: none;
+  }
+
+  /* Um traço fino que nasce do centro */
+  .header__link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 6px;
+    height: 1px;
+    background: currentColor;
+    scale: 0 1;
+    transition: scale var(--t-mid) var(--ease);
+  }
+
+  .header__link:hover::after,
+  .header__link[aria-current="page"]::after {
+    scale: 1 1;
+  }
+
+  .header :global(.header__cta) {
+    display: none;
+  }
+
+  .header[data-tone="dark"] :global(.header__cta) {
+    --btn-bg: var(--c-caramel);
+    --btn-fg: var(--c-forest);
+    --btn-bg-hover: var(--c-caramel-soft);
+  }
+
+  .header__menu {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    margin-right: -12px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 999px;
+    background: none;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .header__menu-icon,
+  .header__menu-icon::after {
+    display: block;
+    width: 18px;
+    height: 1.25px;
+    background: currentColor;
+  }
+
+  .header__menu-icon {
+    position: relative;
+    top: -3px;
+  }
+
+  .header__menu-icon::after {
+    content: "";
+    position: absolute;
+    top: 6px;
+    width: 12px;
+  }
+
+  /* Tablet: o botão do WhatsApp entra ao lado do "Menu". A navegação completa
+     só aparece quando cabe numa linha, com folga (1200 px). */
+  @media (min-width: 768px) {
+    .header :global(.header__cta) {
+      display: inline-flex;
+    }
+
+    .header__bar {
+      gap: 20px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .header__logo-svg {
+      width: 152px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .header__bar {
+      gap: 32px;
+    }
+
+    .header__nav {
+      display: block;
+    }
+
+    .header__menu {
+      display: none;
+    }
+  }
+
+  /* ---------- Menu do celular (Popover API: abre e fecha sem JavaScript) ---------- */
+
+  .menu {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 0 var(--margin) max(28px, env(safe-area-inset-bottom));
+    border: 0;
+    display: none;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .menu:popover-open {
+    display: flex;
+  }
+
+  :global(html:has(.menu:popover-open)) {
+    overflow: hidden;
+  }
+
+  .menu__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: none;
+    height: var(--header-h);
+    color: var(--c-cream);
+  }
+
+  .menu__logo {
+    color: inherit;
+  }
+
+  .menu__close {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+    margin-right: -12px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 999px;
+    background: none;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .menu__close-icon {
+    position: relative;
+    width: 14px;
+    height: 14px;
+  }
+
+  .menu__close-icon::before,
+  .menu__close-icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 14px;
+    height: 1.25px;
+    background: currentColor;
+    rotate: 45deg;
+  }
+
+  .menu__close-icon::after {
+    rotate: -45deg;
+  }
+
+  .menu__list {
+    margin-top: 28px;
+  }
+
+  .menu__link {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line-dark);
+    font-size: clamp(1.875rem, 1.2rem + 3vw, 2.5rem);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    text-decoration: none;
+  }
+
+  .menu__link[aria-current="page"] {
+    color: var(--c-caramel);
+  }
+
+  .menu__foot {
+    margin-top: auto;
+    padding-top: 40px;
+  }
+
+  .menu__contact {
+    margin-top: 24px;
+    color: var(--c-mist);
+    font-size: var(--fs-small);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .menu {
+      opacity: 0;
+      transition:
+        opacity var(--t-mid) var(--ease),
+        display var(--t-mid) allow-discrete,
+        overlay var(--t-mid) allow-discrete;
+    }
+
+    .menu:popover-open {
+      opacity: 1;
+    }
+
+    .menu__list li {
+      opacity: 0;
+      translate: 0 14px;
+      transition:
+        opacity var(--t-mid) var(--ease-soft),
+        translate var(--t-mid) var(--ease-soft);
+      transition-delay: calc(80ms + var(--i) * 50ms);
+    }
+
+    .menu:popover-open .menu__list li {
+      opacity: 1;
+      translate: none;
+    }
+
+    @starting-style {
+      .menu:popover-open {
+        opacity: 0;
+      }
+
+      .menu:popover-open .menu__list li {
+        opacity: 0;
+        translate: 0 14px;
+      }
+    }
+  }
+</style>
+
+<script>
+  // O cabeçalho ganha fundo depois dos primeiros pixels de rolagem e acompanha
+  // o tom da seção que está por baixo dele (verde ou claro). Tudo com
+  // IntersectionObserver: nada lê o layout enquanto a página carrega.
+  const header = document.querySelector<HTMLElement>("[data-header]");
+  if (header && "IntersectionObserver" in window) {
+    const sentinel = document.createElement("div");
+    sentinel.setAttribute("aria-hidden", "true");
+    sentinel.style.cssText = "position:absolute;top:0;left:0;width:1px;height:8px;pointer-events:none";
+    document.body.prepend(sentinel);
+    new IntersectionObserver(([entry]) => header.classList.toggle("is-scrolled", !entry.isIntersecting)).observe(sentinel);
+
+    const dark = new Set<Element>();
+    // Faixa de observação: os 7% do alto da tela, onde fica o cabeçalho.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) dark.add(entry.target);
+          else dark.delete(entry.target);
+        }
+        header.dataset.tone = dark.size ? "dark" : "light";
+      },
+      { rootMargin: "0px 0px -93% 0px" },
+    );
+    document.querySelectorAll("main > .tone-dark, footer.tone-dark").forEach((section) => observer.observe(section));
+  } else if (header) {
+    // Navegador sem IntersectionObserver: o cabeçalho fica sempre com fundo.
+    header.classList.add("is-scrolled");
+  }
+</script>

@@ -1,0 +1,335 @@
+---
+// Narrativa da poltrona (post 3). Uma foto fica presa na tela enquanto os
+// textos passam, e troca conforme o texto que cruza a linha de leitura.
+// Desktop: foto à esquerda, textos à direita. Celular: a foto fica presa no
+// alto e os textos correm por baixo dela. Sem JS: cada texto com a própria foto.
+// Usada na home (resumo, no verde) e na página A poltrona (completa, no papel).
+import Frame from "../Frame.astro";
+import Photo from "../Photo.astro";
+import type { ChairPhoto } from "../../data/poltrona";
+
+interface Step {
+  photo: ChairPhoto;
+  /** Nome curto da foto, no indicador abaixo dela. */
+  short: string;
+  title: string;
+  text: string;
+  /** Parte da foto que fica no quadro 4:5 (object-position). */
+  pos?: string;
+}
+
+interface Props {
+  tone?: "dark" | "paper";
+  label: string;
+  /** Título da seção; aceita <em> para a palavra em destaque. */
+  titleHtml: string;
+  steps: Step[];
+  motto?: string;
+  link?: { href: string; label: string };
+  sheet?: boolean;
+}
+
+const { tone = "dark", label, titleHtml, steps, motto, link, sheet = false } = Astro.props;
+const widths = [480, 720, 928];
+---
+
+<section class:list={["story", `tone-${tone}`, sheet && "sheet"]} data-story aria-labelledby="story-title">
+  <div class="grid story__grid">
+    <div class="story__stage">
+      <div class="story__frame">
+        {
+          steps.map((step, i) => (
+            <div class:list={["story__image frame", i === 0 && "is-active"]} data-story-image style={step.pos && `--pos:${step.pos}`}>
+              <div class="frame__media">
+                <Photo name={step.photo.name} alt={step.photo.alt} widths={widths} sizes="(min-width: 1024px) 40vw, 80vw" ratio="4:5" />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <ol class="story__dots" aria-hidden="true">
+        {steps.map((step, i) => <li class:list={["story__dot", i === 0 && "is-active"]} data-story-dot>{step.short}</li>)}
+      </ol>
+    </div>
+
+    <div class="story__steps">
+      {
+        steps.map((step, i) => (
+          <div class:list={["story__step", i === 0 && "is-active"]} data-story-step>
+            <div class="story__text" data-story-focus>
+              {i === 0 ? (
+                <>
+                  <span class="label">{label}</span>
+                  <h2 id="story-title" class="heading t-h2" set:html={titleHtml} />
+                </>
+              ) : (
+                <h3 class="t-h3 story__title">{step.title}</h3>
+              )}
+              <p>{step.text}</p>
+            </div>
+            <Frame
+              class="story__inline"
+              name={step.photo.name}
+              alt={step.photo.alt}
+              widths={widths}
+              sizes="(min-width: 768px) 45vw, 92vw"
+              ratio="4 / 5"
+              pos={step.pos}
+            />
+          </div>
+        ))
+      }
+
+      {
+        (motto || link) && (
+          <div class="story__end">
+            {motto && <p class="story__motto">{motto}</p>}
+            {link && (
+              <a class="link" href={link.href}>
+                {link.label}
+              </a>
+            )}
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .story {
+    padding-block: 72px 112px;
+  }
+
+  .story__stage {
+    display: none;
+  }
+
+  .story__step + .story__step {
+    margin-top: 72px;
+  }
+
+  .story__text > * + * {
+    margin-top: 16px;
+  }
+
+  .story__text .heading {
+    margin-top: 20px;
+  }
+
+  .story__text p {
+    max-width: 44ch;
+    color: var(--fg-soft);
+  }
+
+  .story :global(.story__inline) {
+    margin-top: 28px;
+  }
+
+  .story__end {
+    margin-top: 72px;
+  }
+
+  .story__motto {
+    margin-bottom: 20px;
+    color: var(--accent);
+    font-size: var(--fs-h3);
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.012em;
+  }
+
+  /* ---------- Com JS: uma foto presa e os textos passando ---------- */
+
+  :global(.js) .story :global(.story__inline) {
+    display: none;
+  }
+
+  :global(.js) .story__stage {
+    display: block;
+  }
+
+  .story__frame {
+    position: relative;
+    aspect-ratio: 4 / 5;
+  }
+
+  .story__image {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition:
+      opacity var(--t-slow) var(--ease),
+      scale 1.6s var(--ease-soft);
+    scale: 1.03;
+  }
+
+  .story__image.is-active {
+    opacity: 1;
+    scale: 1;
+  }
+
+  /* Indicador: um traço por foto, o atual em destaque */
+  .story__dots {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .story__dot {
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+    color: var(--fg-soft);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition:
+      border-color var(--t-mid) var(--ease),
+      color var(--t-mid) var(--ease);
+  }
+
+  .story__dot.is-active {
+    border-top-color: var(--accent);
+    color: var(--heading);
+  }
+
+  /* Celular e tablet: a foto fica presa no alto; o texto corre por baixo dela. */
+  @media (max-width: 1023px) {
+    :global(.js) .story__stage {
+      position: sticky;
+      top: var(--header-h);
+      z-index: 2;
+      margin-inline: calc(-1 * var(--margin));
+      padding: 10px var(--margin) 14px;
+      background: var(--bg);
+    }
+
+    /* O texto some com suavidade ao passar por baixo da foto. */
+    :global(.js) .story__stage::after {
+      content: "";
+      position: absolute;
+      inset: 100% 0 auto;
+      height: 48px;
+      background: linear-gradient(var(--bg), transparent);
+      pointer-events: none;
+    }
+
+    :global(.js) .story__frame {
+      width: min(100%, calc(42svh * 0.8));
+      margin-inline: auto;
+    }
+
+    :global(.js) .story__dots {
+      width: min(100%, 420px);
+      margin-inline: auto;
+    }
+
+    :global(.js) .story__step {
+      display: flex;
+      align-items: center;
+      min-height: 58svh;
+      padding-block: 48px;
+    }
+
+    :global(.js) .story__step + .story__step {
+      margin-top: 0;
+    }
+
+    :global(.js) .story__end {
+      margin-top: 0;
+      padding-block: 24px 16px;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .story__text {
+      max-width: 60ch;
+    }
+  }
+
+  /* ---------- Desktop: foto à esquerda, textos à direita ---------- */
+
+  @media (min-width: 1024px) {
+    .story {
+      padding-block: 144px 160px;
+    }
+
+    .story__steps {
+      grid-column: col 8 / span 5;
+      grid-row: 1;
+    }
+
+    :global(.js) .story__stage {
+      grid-column: col 1 / span 6;
+      grid-row: 1;
+      align-self: start;
+      position: sticky;
+      top: max(calc(var(--header-h) + 24px), (100svh - min(74svh, 720px)) / 2 - 24px);
+    }
+
+    :global(.js) .story__frame {
+      height: min(74svh, 720px);
+      max-width: 100%;
+    }
+
+    :global(.js) .story__dots {
+      width: min(100%, calc(min(74svh, 720px) * 0.8));
+    }
+
+    :global(.js) .story__step {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 86svh;
+    }
+
+    :global(.js) .story__step + .story__step {
+      margin-top: 0;
+    }
+
+    :global(.js) .story__end {
+      margin-top: 0;
+      padding-bottom: 14svh;
+    }
+
+    .story__text p {
+      font-size: var(--fs-lead);
+      line-height: 1.6;
+    }
+  }
+
+  /* Texto em foco: o ativo inteiro, os outros num tom que ainda passa AA. */
+  :global(.js) .story.is-enhanced .story__step:not(.is-active) .story__text :is(.heading, .story__title, p, .label) {
+    color: var(--dim-text);
+  }
+
+  :global(.js) .story__text :is(.heading, .story__title, p, .label) {
+    transition: color var(--t-mid) var(--ease);
+  }
+
+  .story.tone-dark {
+    --dim-text: var(--c-dim-text);
+  }
+
+  .story.tone-paper {
+    --dim-text: #736b62; /* 4,82:1 sobre o papel */
+  }
+
+  .story :global(.heading em) {
+    transition: color var(--t-mid) var(--ease);
+  }
+
+  :global(.js) .story.is-enhanced .story__step:not(.is-active) :global(.heading em) {
+    color: inherit;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .story__image,
+    .story__dot,
+    .story__text :is(.heading, .story__title, p, .label) {
+      transition: none !important;
+    }
+  }
+</style>

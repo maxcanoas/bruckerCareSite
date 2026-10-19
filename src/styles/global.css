@@ -1,0 +1,607 @@
+/* ==========================================================================
+   BruckerCare: base do site (versão 2)
+   Tokens, tipografia, grid, superfícies, peças pequenas e movimento.
+   A direção está em docs/direcao-de-arte.md; os contrastes citados foram
+   medidos (WCAG 2.1).
+   ========================================================================== */
+
+/* Fonte de reserva: Arial ajustada à largura e às alturas da Inter, peso a peso
+   (medido com opentype.js sobre um trecho do site). Evita que as linhas quebrem
+   diferente enquanto a Inter carrega, o que geraria layout shift. */
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial"), local("ArialMT"), local("Liberation Sans");
+  font-weight: 100 549;
+  size-adjust: 106.14%;
+  ascent-override: 91.27%;
+  descent-override: 22.72%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold");
+  font-weight: 550 649;
+  size-adjust: 101.3%;
+  ascent-override: 95.63%;
+  descent-override: 23.81%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold");
+  font-weight: 650 900;
+  size-adjust: 102.16%;
+  ascent-override: 94.83%;
+  descent-override: 23.61%;
+  line-gap-override: 0%;
+}
+
+:root {
+  /* Cor: o verde e o caramelo do logo, e os tons de linho das paredes das fotos */
+  --c-paper: #f8f5f0; /* fundo claro principal */
+  --c-linen: #efe8de; /* segundo fundo claro: o tom das paredes nas fotos */
+  --c-shell: #fcfaf7; /* cartões sobre o linho */
+  --c-forest: #061c19; /* fundo das seções verdes; quase o verde do estúdio das fotos */
+  --c-forest-2: #0b2622; /* superfície elevada sobre o verde */
+  --c-brand: #082b27; /* verde do logo: títulos e botão sobre o claro */
+  --c-brand-hover: #0f3b35;
+  --c-caramel: #c48e52; /* ícone do logo: destaque sobre o verde (6,18:1); sobre o claro, só em traço */
+  --c-caramel-soft: #d9b183;
+  --c-tobacco: #82592f; /* destaque em texto sobre o claro (5,65:1 no papel, 5,05:1 no linho) */
+  --c-kraft: #c9a273; /* só a etiqueta (tinta sobre kraft: 6,95:1) */
+  --c-ink: #221f1b; /* texto sobre o claro (15:1) */
+  --c-ink-soft: #5e574f; /* texto secundário sobre o claro (6,5:1 e 5,9:1) */
+  --c-cream: #f7f2ea; /* texto sobre o verde (15,9:1) */
+  --c-mist: #c3cbc5; /* texto secundário sobre o verde (10,7:1) */
+  --c-dim: #5d6a65; /* texto grande apagado sobre o verde (3,1:1) */
+  --c-dim-text: #7c8580; /* texto corrido apagado sobre o verde (4,65:1) */
+  --line-light: rgb(8 43 39 / 0.12);
+  --line-dark: rgb(247 242 234 / 0.14);
+
+  /* Tipografia: só a Inter, fluida entre 360 e 1440 px. Títulos leves (300),
+     destaque em cor e um degrau de peso, como nas artes, só que mais fino. */
+  --font: var(--font-inter);
+  --fs-display: clamp(2.25rem, 1.5rem + 3.333vw, 4.5rem); /* 36 → 72 */
+  --fs-h2: clamp(1.875rem, 1.458rem + 1.852vw, 3.125rem); /* 30 → 50 */
+  --fs-h3: clamp(1.1875rem, 1.104rem + 0.37vw, 1.4375rem); /* 19 → 23 */
+  --fs-lead: clamp(1.0625rem, 1rem + 0.278vw, 1.25rem); /* 17 → 20 */
+  --fs-body: clamp(1rem, 0.979rem + 0.093vw, 1.0625rem); /* 16 → 17 */
+  --fs-small: 0.875rem;
+  --fs-label: 0.8125rem;
+
+  /* Forma: cantos macios, como as almofadas da poltrona */
+  --r-s: 10px;
+  --r-m: 16px;
+  --r-l: clamp(18px, 0.917rem + 0.926vw, 28px);
+  --r-sheet: clamp(28px, 1.167rem + 2.593vw, 56px);
+
+  /* Movimento: lento e calmo, sem quique */
+  --ease: cubic-bezier(0.22, 0.7, 0.2, 1);
+  --ease-soft: cubic-bezier(0.16, 0.84, 0.24, 1);
+  --t-fast: 280ms;
+  --t-mid: 700ms;
+  --t-slow: 1100ms;
+
+  /* Grid */
+  --cols: 4;
+  --margin: 20px;
+  --gutter: 16px;
+  --max: 1200px;
+  --header-h: 64px;
+
+  /* Superfície padrão: papel */
+  --bg: var(--c-paper);
+  --fg: var(--c-ink);
+  --fg-soft: var(--c-ink-soft);
+  --heading: var(--c-brand);
+  --accent: var(--c-tobacco);
+  --line: var(--line-light);
+  --focus: var(--c-tobacco);
+
+  color-scheme: light;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --cols: 8;
+    --margin: 40px;
+    --gutter: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --cols: 12;
+    --margin: clamp(48px, 6vw, 112px);
+    --gutter: 32px;
+    --header-h: 76px;
+  }
+}
+
+/* ---------- Superfícies ---------- */
+
+.tone-paper,
+.tone-linen {
+  --fg: var(--c-ink);
+  --fg-soft: var(--c-ink-soft);
+  --heading: var(--c-brand);
+  --accent: var(--c-tobacco);
+  --line: var(--line-light);
+  --focus: var(--c-tobacco);
+  background-color: var(--bg);
+  color: var(--fg);
+}
+.tone-paper { --bg: var(--c-paper); }
+.tone-linen { --bg: var(--c-linen); }
+
+.tone-dark {
+  --bg: var(--c-forest);
+  --fg: var(--c-cream);
+  --fg-soft: var(--c-mist);
+  --heading: var(--c-cream);
+  --accent: var(--c-caramel);
+  --line: var(--line-dark);
+  --focus: var(--c-caramel);
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+/* Lençol: a seção começa com os cantos de cima arredondados, e os cantos mostram
+   a cor da seção anterior (uma sombra sólida da mesma cor, deslocada para cima,
+   preenche o espaço atrás da curva). As passagens de tom ficam macias, como
+   camadas de tecido, sem nenhuma seção cobrir o conteúdo da outra. */
+.sheet {
+  position: relative;
+  border-radius: var(--r-sheet) var(--r-sheet) 0 0;
+  box-shadow: 0 calc(-1 * var(--r-sheet)) 0 0 var(--under, transparent);
+}
+
+.tone-paper + .sheet { --under: var(--c-paper); }
+.tone-linen + .sheet { --under: var(--c-linen); }
+.tone-dark + .sheet { --under: var(--c-forest); }
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--c-paper);
+  scroll-padding-top: calc(var(--header-h) + 20px);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--c-paper);
+  color: var(--fg);
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+h1, h2, h3, h4, p, ul, ol, figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+ul[class], ol[class] {
+  list-style: none;
+  padding: 0;
+}
+
+img, picture, svg, video {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--c-caramel);
+  color: var(--c-forest);
+}
+
+p, li, dd {
+  text-wrap: pretty;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ---------- Grid ---------- */
+/* Colunas nomeadas: `col 1` é o início da primeira coluna; `full-start` e
+   `full-end` são as bordas da tela. */
+
+.grid {
+  --col-w: calc((min(100%, var(--max) + 2 * var(--margin)) - 2 * var(--margin) - (var(--cols) - 1) * var(--gutter)) / var(--cols));
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(0, 1fr)
+    [content-start] repeat(var(--cols), [col] var(--col-w))
+    [content-end] minmax(0, 1fr) [full-end];
+  column-gap: var(--gutter);
+}
+
+.grid > * {
+  grid-column: content;
+}
+
+.wrap {
+  width: min(100% - 2 * var(--margin), var(--max));
+  margin-inline: auto;
+}
+
+/* ---------- Tipografia ---------- */
+
+.heading {
+  color: var(--heading);
+  font-weight: 300;
+  text-wrap: balance;
+}
+
+/* A palavra-chave: a cor de destaque e um degrau de peso, como nas artes do feed. */
+.heading em,
+.em {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.t-display {
+  font-size: var(--fs-display);
+  line-height: 1.04;
+  letter-spacing: -0.036em;
+}
+
+.t-h2 {
+  font-size: var(--fs-h2);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.t-h3 {
+  font-size: var(--fs-h3);
+  font-weight: 450;
+  line-height: 1.3;
+  letter-spacing: -0.012em;
+  color: var(--heading);
+  text-wrap: balance;
+}
+
+.t-lead {
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+}
+
+.t-small {
+  font-size: var(--fs-small);
+  line-height: 1.55;
+}
+
+.t-soft {
+  color: var(--fg-soft);
+}
+
+/* Nome de capítulo, em minúsculas como no logo. O anel à esquerda é o ilhós
+   da etiqueta "higienizada e pronta para você", o detalhe que costura o site. */
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--fs-label);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+}
+
+.label::before {
+  content: "";
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border: 1.25px solid currentColor;
+  border-radius: 50%;
+}
+
+/* Numeração só onde a ordem importa: algarismos finos e tabulares */
+.num {
+  display: block;
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--accent);
+}
+
+.prose {
+  max-width: 60ch;
+}
+
+.prose > * + * {
+  margin-top: 1em;
+}
+
+/* ---------- Links e botões ---------- */
+
+/* inline-block: o sublinhado fica só no texto; a seta (atômica) não é sublinhada. */
+.link {
+  display: inline-block;
+  color: var(--heading);
+  font-weight: 500;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+  text-decoration-color: currentColor;
+  transition: text-decoration-color var(--t-mid) var(--ease);
+}
+
+.link::after {
+  content: "→";
+  display: inline-block;
+  margin-left: 10px;
+  font-weight: 400;
+  transition: translate var(--t-fast) var(--ease);
+}
+
+.link:hover {
+  text-decoration-color: color-mix(in srgb, currentColor 30%, transparent);
+}
+
+.link:hover::after {
+  translate: 4px 0;
+}
+
+.btn {
+  --btn-bg: var(--c-brand);
+  --btn-fg: var(--c-cream);
+  --btn-bg-hover: var(--c-brand-hover);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 54px;
+  padding: 0 28px 0 22px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.005em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--t-fast) var(--ease);
+}
+
+.btn:hover {
+  background: var(--btn-bg-hover);
+}
+
+.btn__icon {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  transition: rotate var(--t-mid) var(--ease);
+}
+
+.btn:hover .btn__icon {
+  rotate: -12deg;
+}
+
+.tone-dark .btn {
+  --btn-bg: var(--c-caramel);
+  --btn-fg: var(--c-forest);
+  --btn-bg-hover: var(--c-caramel-soft);
+}
+
+.btn--small {
+  min-height: 44px;
+  padding: 0 20px 0 16px;
+  gap: 10px;
+  font-size: 0.9375rem;
+}
+
+.btn--small .btn__icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ---------- Fotos ---------- */
+/* Quadro com a proporção da própria foto e cantos macios. O recorte usa
+   clip-path, que também recorta a camada do parallax no Safari. */
+
+.frame {
+  position: relative;
+  aspect-ratio: var(--ratio, auto);
+  overflow: hidden;
+  border-radius: var(--r-l);
+  clip-path: inset(0 round var(--r-l));
+  background: var(--c-linen);
+}
+
+.tone-dark .frame {
+  background: var(--c-forest-2);
+}
+
+.frame__media {
+  position: absolute;
+  inset: 0;
+}
+
+.frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--pos, 50% 50%);
+}
+
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 4px;
+  padding: 16px;
+  border: 1px dashed var(--c-tobacco);
+  border-radius: inherit;
+  background: var(--c-linen);
+  color: var(--c-tobacco);
+  font-size: var(--fs-small);
+  text-align: center;
+}
+
+.placeholder strong {
+  font-weight: 600;
+  word-break: break-all;
+}
+
+/* ---------- Acessibilidade ---------- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 100;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: var(--c-forest);
+  color: var(--c-cream);
+  font-weight: 500;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+  outline-color: var(--c-caramel);
+}
+
+/* ==========================================================================
+   Movimento
+   Estado de base = conteúdo completo e parado (sem JS ou com movimento
+   reduzido). Os estados animados só valem com `html.js` e sem preferência por
+   movimento reduzido. `html.lite` (aparelho fraco ou economia de dados)
+   desliga o parallax.
+   ========================================================================== */
+
+/* Progresso de rolagem: CSS onde há suporte; senão, src/scripts/motion.ts
+   escreve --p no elemento. Faixas: cover, contain, entry, exit e center
+   (center = do topo do elemento no meio da tela até o fim dele no meio). */
+@property --p {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+@keyframes progress {
+  from { --p: 0; }
+  to { --p: 1; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .js [data-range] {
+      animation: progress linear both;
+    }
+    /* Em regra separada (e mais específica) de propósito: o minificador junta
+       animation-timeline ao atalho `animation`, e essa forma o Chrome rejeita. */
+    :root.js [data-range] {
+      animation-timeline: view();
+    }
+    .js [data-range="cover"] { animation-range: cover; }
+    .js [data-range="contain"] { animation-range: contain; }
+    .js [data-range="entry"] { animation-range: entry; }
+    .js [data-range="exit"] { animation-range: exit; }
+    .js [data-range="center"] { animation-range: cover 50vh cover calc(100% - 50vh); }
+  }
+
+  /* Parallax dentro do quadro: a foto, um pouco maior que o quadro, desliza devagar. */
+  :root.js:not(.lite) [data-parallax] .frame__media {
+    scale: 1.1;
+    translate: 0 calc((var(--p) - 0.5) * var(--drift, -8%));
+  }
+
+  /* Entradas que acontecem uma vez (IntersectionObserver adiciona .is-in) */
+  .js [data-reveal="rise"] {
+    opacity: 0;
+    translate: 0 22px;
+    transition:
+      opacity var(--t-slow) var(--ease-soft),
+      translate var(--t-slow) var(--ease-soft);
+    transition-delay: calc(var(--d, 0) * 110ms);
+  }
+
+  .js [data-reveal="rise"].is-in {
+    opacity: 1;
+    translate: none;
+  }
+
+  /* A foto se descobre de baixo para cima, como um lençol puxado com calma. */
+  .js [data-reveal="unveil"] {
+    clip-path: inset(14% 0 0 0 round var(--r-l));
+    transition: clip-path 1.4s var(--ease-soft);
+  }
+
+  .js [data-reveal="unveil"].is-in {
+    clip-path: inset(0 round var(--r-l));
+  }
+
+  .js [data-reveal="line"] {
+    scale: 0 1;
+    transform-origin: left center;
+    transition: scale var(--t-slow) var(--ease-soft);
+    transition-delay: calc(var(--d, 0) * 110ms);
+  }
+
+  .js [data-reveal="line"].is-in {
+    scale: 1 1;
+  }
+}

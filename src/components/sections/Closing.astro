@@ -1,0 +1,124 @@
+---
+// Fechamento (post 12). Verde profundo, emendado no rodapé.
+// A poltrona de estúdio sobe da borda de baixo e se funde ao verde da seção,
+// porque o fundo da foto é o mesmo verde. Fecha a home, Quem somos e A poltrona.
+import Photo from "../Photo.astro";
+import WhatsAppButton from "../WhatsAppButton.astro";
+import { company } from "../../data/empresa";
+import type { WhatsappPlacement } from "../../lib/whatsapp";
+
+interface Props {
+  placement: WhatsappPlacement;
+}
+
+const { placement } = Astro.props;
+---
+
+<section class="closing tone-dark sheet" data-float-hide aria-labelledby="closing-title">
+  <div class="grid closing__grid">
+    <div class="closing__text">
+      <span class="label" data-reveal="rise">consulte a disponibilidade</span>
+      <h2 id="closing-title" class="heading t-display" data-reveal="rise">
+        Precisa de uma poltrona para <em>a recuperação</em>?
+      </h2>
+      <p data-reveal="rise" style="--d:1">
+        Fale com a {company.name}. Tire as suas dúvidas e consulte a disponibilidade. A gente entrega e retira na sua
+        casa, em {company.serviceArea}.
+      </p>
+      <WhatsAppButton class="closing__cta" placement={placement} label="Consultar disponibilidade" />
+    </div>
+
+    <div class="closing__chair" data-range="entry" aria-hidden="true">
+      <div class="closing__chair-image">
+        <Photo name="poltrona-estudio-verde" alt="" widths={[480, 720, 928]} sizes="(min-width: 1024px) 40vw, 90vw" ratio="4:5" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .closing {
+    padding-top: 104px;
+    overflow: clip;
+  }
+
+  .closing__text > * + * {
+    margin-top: 20px;
+  }
+
+  .closing__text .heading {
+    margin-top: 22px;
+  }
+
+  .closing__text p {
+    max-width: 40ch;
+    color: var(--fg-soft);
+  }
+
+  .closing__text :global(.closing__cta) {
+    margin-top: 32px;
+  }
+
+  /* A poltrona sobe da borda de baixo. O fundo de estúdio é quase o verde da
+     seção; as bordas da foto se esfumam e o retângulo desaparece. */
+  .closing__chair {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+
+  .closing__chair-image {
+    position: relative;
+    width: min(100%, 400px);
+    aspect-ratio: 928 / 1040;
+    overflow: hidden;
+    -webkit-mask-image:
+      linear-gradient(to right, transparent, #000 7%, #000 93%, transparent),
+      linear-gradient(to bottom, transparent, #000 14%, #000 80%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to right, transparent, #000 7%, #000 93%, transparent),
+      linear-gradient(to bottom, transparent, #000 14%, #000 80%, transparent);
+    mask-composite: intersect;
+  }
+
+  .closing__chair-image :global(img) {
+    position: absolute;
+    inset: 0 0 auto;
+    width: 100%;
+    height: auto;
+  }
+
+  @media (min-width: 1024px) {
+    .closing {
+      padding-top: 168px;
+    }
+
+    .closing__grid {
+      align-items: end;
+    }
+
+    .closing__text {
+      grid-column: col 1 / span 6;
+      grid-row: 1;
+      padding-bottom: 168px;
+    }
+
+    .closing__chair {
+      grid-column: col 7 / span 6;
+      grid-row: 1;
+      justify-content: flex-end;
+      margin-top: 0;
+    }
+
+    .closing__chair-image {
+      width: min(100%, 560px);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    :global(.js:not(.lite)) .closing__chair-image {
+      translate: 0 calc((1 - var(--p)) * 12%);
+    }
+  }
+</style>

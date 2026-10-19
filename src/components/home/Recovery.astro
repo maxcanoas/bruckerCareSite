@@ -1,0 +1,156 @@
+---
+// A recuperação começa antes (posts 4 e 9). Papel.
+// Díptico: a foto do descanso grande e a do acompanhante menor e mais baixa,
+// cada uma com uma velocidade de parallax, e o texto encaixado entre elas.
+import Frame from "../Frame.astro";
+---
+
+<section class="recovery tone-paper" aria-labelledby="recovery-title">
+  <div class="grid recovery__grid">
+    <span class="label recovery__label" data-reveal="rise">antes da cirurgia</span>
+    <h2 id="recovery-title" class="recovery__title heading t-display" data-reveal="rise">
+      A recuperação não começa quando você chega em casa. <em>Ela começa antes.</em>
+    </h2>
+
+    <p class="recovery__intro t-lead" data-reveal="rise" style="--d:1">
+      Começa quando você prepara o espaço, organiza a rotina e pensa nos primeiros dias com mais cuidado. Deixar o que
+      você precisa por perto, facilitar os movimentos e ter apoio quando for necessário também é uma forma de cuidado.
+    </p>
+
+    <Frame
+      class="recovery__rest"
+      name="recuperacao-descanso"
+      alt="Mulher descansando de olhos fechados numa poltrona elétrica de couro marrom reclinada, com as pernas apoiadas e uma manta clara, ao lado de uma janela com cortina de linho."
+      widths={[480, 720, 960, 1264]}
+      sizes="(min-width: 1024px) 62vw, 92vw"
+      ratio="3 / 2"
+      parallax={-6}
+      reveal
+    />
+
+    <Frame
+      class="recovery__care-photo"
+      name="acompanhante-cuidado"
+      alt="Homem servindo uma xícara e apoiando a mão no ombro de uma mulher que descansa numa poltrona de couro caramelo, coberta com uma manta."
+      widths={[400, 560, 720]}
+      sizes="(min-width: 1024px) 30vw, 72vw"
+      ratio="4 / 5"
+      pos="60% 50%"
+      parallax={-14}
+      reveal
+    />
+
+    <div class="recovery__care" data-reveal="rise">
+      <h3 class="t-h3">Para quem se recupera e para quem está por perto.</h3>
+      <p>
+        Voltar para casa depois de uma cirurgia é um momento de adaptação: a rotina muda e alguns movimentos pedem mais
+        cuidado. Um ambiente preparado traz mais conforto e tranquilidade, tanto para quem está se recuperando quanto
+        para quem está por perto.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .recovery {
+    padding-block: 80px 120px;
+  }
+
+  .recovery__grid {
+    row-gap: 0;
+  }
+
+  .recovery__title {
+    margin-top: 22px;
+  }
+
+  .recovery__intro {
+    margin-top: 28px;
+    max-width: 52ch;
+    color: var(--fg-soft);
+  }
+
+  .recovery :global(.recovery__rest) {
+    margin-top: 56px;
+  }
+
+  .recovery :global(.recovery__care-photo) {
+    grid-column: col 2 / content-end;
+    margin-top: 20px;
+  }
+
+  .recovery__care {
+    margin-top: 36px;
+  }
+
+  .recovery__care p {
+    max-width: 52ch;
+    margin-top: 14px;
+    color: var(--fg-soft);
+  }
+
+  @media (min-width: 768px) {
+    .recovery__title {
+      grid-column: col 1 / span 7;
+    }
+
+    .recovery__intro {
+      grid-column: col 1 / span 6;
+    }
+
+    .recovery :global(.recovery__rest) {
+      grid-column: content;
+      margin-top: 64px;
+    }
+
+    .recovery :global(.recovery__care-photo) {
+      grid-column: col 5 / span 4;
+      grid-row: 5;
+      margin-top: 40px;
+    }
+
+    .recovery__care {
+      grid-column: col 1 / span 4;
+      grid-row: 5;
+      align-self: end;
+      margin-top: 40px;
+    }
+  }
+
+  /* ---------- Desktop: as duas fotos se encaixam, o texto fica na brecha ---------- */
+
+  @media (min-width: 1024px) {
+    .recovery {
+      padding-block: 168px 184px;
+    }
+
+    .recovery__title {
+      grid-column: col 1 / span 9;
+    }
+
+    .recovery__intro {
+      grid-column: col 1 / span 5;
+      margin-top: 40px;
+    }
+
+    .recovery :global(.recovery__rest) {
+      grid-column: col 1 / span 8;
+      grid-row: 4;
+      margin-top: 96px;
+    }
+
+    .recovery :global(.recovery__care-photo) {
+      grid-column: col 9 / span 4;
+      grid-row: 4 / span 2;
+      align-self: start;
+      margin-top: 288px;
+    }
+
+    .recovery__care {
+      grid-column: col 2 / span 6;
+      grid-row: 5;
+      align-self: start;
+      margin-top: 64px;
+    }
+  }
+</style>

@@ -1,0 +1,96 @@
+---
+// Aviso de cookies: aceitar e recusar com o mesmo peso. Só aparece com JavaScript
+// (sem JavaScript o GA4 nem carrega, então não há o que consentir). O script do
+// <head> decide antes da primeira pintura se ele aparece (classe consent-pending).
+// Compacto de propósito: no celular não cobre a foto da poltrona no hero.
+interface Props {
+  gaId: string;
+}
+
+const { gaId } = Astro.props;
+---
+
+<div class="consent" data-consent data-ga-id={gaId} role="region" aria-label="Aviso de cookies">
+  <p class="consent__text">
+    Usamos cookies de análise (Google Analytics) só com a sua permissão.
+    <a href="/politica-de-privacidade#cookies">Política de privacidade</a>
+  </p>
+  <div class="consent__actions">
+    <button class="consent__button" type="button" data-consent-choice="granted">Aceitar</button>
+    <button class="consent__button" type="button" data-consent-choice="denied">Recusar</button>
+  </div>
+</div>
+
+<style>
+  .consent {
+    --focus: var(--c-tobacco);
+    position: fixed;
+    inset: auto 10px max(10px, env(safe-area-inset-bottom));
+    z-index: 60;
+    display: none;
+    padding: 12px 14px;
+    border: 1px solid var(--line-light);
+    border-radius: var(--r-m);
+    background: rgb(252 250 247 / 0.96);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    color: var(--c-ink);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    box-shadow: 0 18px 40px -24px rgb(34 31 27 / 0.45);
+  }
+
+  :global(.consent-pending) .consent {
+    display: grid;
+    gap: 10px;
+  }
+
+  .consent__text a {
+    color: var(--c-brand);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+
+  .consent__actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  /* Os dois botões são iguais: mesma cor, mesmo tamanho, mesmo peso. */
+  .consent__button {
+    min-height: 38px;
+    padding: 0 16px;
+    border: 1px solid var(--c-brand);
+    border-radius: 999px;
+    background: var(--c-brand);
+    color: var(--c-cream);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color var(--t-fast) var(--ease);
+  }
+
+  .consent__button:hover {
+    background: var(--c-brand-hover);
+  }
+
+  @media (min-width: 1024px) {
+    .consent {
+      inset: auto auto 28px 28px;
+      width: min(400px, calc(100% - 56px));
+      padding: 20px 22px;
+      font-size: 0.875rem;
+    }
+
+    :global(.consent-pending) .consent {
+      gap: 16px;
+    }
+  }
+</style>
+
+<script>
+  import "../scripts/consent";
+</script>

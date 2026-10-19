@@ -1,0 +1,72 @@
+---
+// Perguntas frequentes da home. Linho. <details> abre sem JavaScript.
+import FaqItems from "../FaqItems.astro";
+import WhatsAppButton from "../WhatsAppButton.astro";
+import { questions } from "../../data/perguntas";
+
+const homeQuestions = questions.filter((q) => q.home);
+---
+
+<section class="faq tone-linen sheet" aria-labelledby="faq-title">
+  <div class="grid faq__grid">
+    <div class="faq__intro">
+      <span class="label">perguntas frequentes</span>
+      <h2 id="faq-title" class="heading t-h2">Dúvidas comuns <em>antes de alugar</em></h2>
+      <a class="link faq__all" href="/perguntas-frequentes">Ver todas as perguntas</a>
+    </div>
+
+    <div class="faq__list">
+      <FaqItems questions={homeQuestions} group="faq-home" />
+      <div class="faq__more">
+        <p>Não encontrou a sua dúvida?</p>
+        <WhatsAppButton placement="homeFaq" label="Perguntar no WhatsApp" size="small" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    padding-block: 96px 112px;
+  }
+
+  .faq__intro .heading {
+    margin-top: 20px;
+  }
+
+  .faq__all {
+    margin-top: 28px;
+  }
+
+  .faq__list {
+    margin-top: 44px;
+  }
+
+  .faq__more {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 20px;
+    margin-top: 36px;
+    color: var(--fg-soft);
+  }
+
+  @media (min-width: 1024px) {
+    .faq {
+      padding-block: 152px 168px;
+    }
+
+    .faq__intro {
+      grid-column: col 1 / span 4;
+      align-self: start;
+      position: sticky;
+      top: calc(var(--header-h) + 48px);
+    }
+
+    .faq__list {
+      grid-column: col 6 / span 7;
+      grid-row: 1;
+      margin-top: 0;
+    }
+  }
+</style>

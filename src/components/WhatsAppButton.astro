@@ -1,0 +1,25 @@
+---
+import WhatsAppIcon from "./icons/WhatsAppIcon.astro";
+import { whatsappMessages, whatsappUrl, type WhatsappPlacement } from "../lib/whatsapp";
+
+interface Props {
+  placement: WhatsappPlacement;
+  label: string;
+  size?: "regular" | "small";
+  class?: string;
+}
+
+const { placement, label, size = "regular", class: className } = Astro.props;
+---
+
+<a
+  class:list={["btn", size === "small" && "btn--small", className]}
+  href={whatsappUrl(whatsappMessages[placement])}
+  target="_blank"
+  rel="noopener"
+  data-track="whatsapp"
+  data-placement={placement}
+>
+  <WhatsAppIcon class="btn__icon" />
+  <span>{label}</span><span class="sr-only"> (abre o WhatsApp em nova aba)</span>
+</a>

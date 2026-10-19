@@ -1,0 +1,242 @@
+---
+// Hero: a poltrona na sala preparada, com a etiqueta kraft pendurada no quadro.
+// Celular: a foto vem primeiro, com o texto pequeno logo abaixo.
+// Desktop: texto à esquerda e a foto em pé (4:5) à direita.
+// A mesma foto vertical serve às duas larguras. Quando existirem as camadas
+// (hero-sala-vazia-mobile + hero-poltrona-recorte-mobile.png, mesmo tamanho e
+// mesmo enquadramento), a sala e a poltrona ganham parallax em dois planos.
+import Photo from "../Photo.astro";
+import Tag from "../Tag.astro";
+import WhatsAppButton from "../WhatsAppButton.astro";
+import { company } from "../../data/empresa";
+import { photo } from "../../lib/photos";
+
+const layered = Boolean(photo("hero-sala-vazia-mobile") && photo("hero-poltrona-recorte-mobile"));
+const alt =
+  "Poltrona elétrica de couro marrom com o logo da BruckerCare na almofada do encosto, numa sala clara com cortina de linho, painel de madeira ripada, mesa lateral e uma manta no braço.";
+const widths = [480, 640, 800, 928];
+const sizes = "(min-width: 1024px) 40vw, (min-width: 768px) 86vw, 96vw";
+---
+
+<section class="hero tone-paper" data-hero data-range="exit" aria-labelledby="hero-title">
+  <div class="grid hero__grid">
+    <div class="hero__text">
+      <p class="label hero__label">aluguel de poltronas para o pós-operatório</p>
+      <h1 id="hero-title" class="hero__title heading">
+        Cuidar também é <em>preparar o caminho</em> da recuperação.
+      </h1>
+      <p class="hero__lead">
+        Poltronas elétricas para a sua recuperação em casa, com entrega e retirada em {company.serviceArea}.
+      </p>
+      <WhatsAppButton class="hero__cta" placement="homeHero" label="Chamar no WhatsApp" />
+    </div>
+
+    <div class="hero__figure">
+      <div class="hero__frame frame">
+        <div class="frame__media hero__layer hero__layer--back">
+          <Photo
+            name={layered ? "hero-sala-vazia-mobile" : "hero-sala-poltrona-mobile"}
+            alt={alt}
+            widths={widths}
+            sizes={sizes}
+            ratio="4:5"
+            priority
+          />
+        </div>
+        {
+          layered && (
+            <div class="frame__media hero__layer hero__layer--front">
+              <Photo name="hero-poltrona-recorte-mobile" alt="" widths={widths} sizes={sizes} ratio="4:5" priority />
+            </div>
+          )
+        }
+      </div>
+      <Tag class="hero__tag" sway start={7} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: calc(var(--header-h) + 2px) 64px;
+  }
+
+  .hero__grid {
+    row-gap: 0;
+  }
+
+  /* ---------- Foto ---------- */
+
+  .hero__figure {
+    grid-column: full;
+    grid-row: 1;
+    position: relative;
+    padding-inline: 10px;
+  }
+
+  .hero__frame {
+    height: clamp(340px, 60svh, 620px);
+  }
+
+  .hero__layer {
+    inset: -6% 0 0;
+  }
+
+  .hero__layer :global(img) {
+    object-position: 58% 80%;
+  }
+
+  /* A etiqueta pende sobre a cortina clara, longe da poltrona. */
+  .hero :global(.hero__tag) {
+    top: 0;
+    left: calc(10px + 15%);
+  }
+
+  /* ---------- Texto: pequeno no celular, para a foto falar primeiro ---------- */
+
+  .hero__text {
+    grid-row: 2;
+    padding-top: 26px;
+  }
+
+  .hero__title {
+    margin-top: 14px;
+    max-width: 15ch;
+    font-size: clamp(1.75rem, 1.25rem + 2.2vw, 2.5rem);
+    line-height: 1.08;
+    letter-spacing: -0.032em;
+  }
+
+  .hero__lead {
+    max-width: 36ch;
+    margin-top: 14px;
+    color: var(--fg-soft);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .hero__text :global(.hero__cta) {
+    margin-top: 26px;
+  }
+
+  @media (min-width: 768px) {
+    .hero__figure {
+      padding-inline: var(--margin);
+    }
+
+    .hero :global(.hero__tag) {
+      left: calc(var(--margin) + 14%);
+    }
+
+    .hero__frame {
+      height: clamp(420px, 62svh, 720px);
+    }
+
+    .hero__text {
+      grid-column: col 1 / span 6;
+      padding-top: 40px;
+    }
+
+    .hero__lead {
+      font-size: var(--fs-lead);
+    }
+  }
+
+  /* ---------- Desktop: texto à esquerda, foto em pé à direita ---------- */
+
+  @media (min-width: 1024px) {
+    .hero {
+      display: flex;
+      align-items: center;
+      min-height: max(660px, 100svh);
+      padding-block: calc(var(--header-h) + 28px) 56px;
+    }
+
+    .hero__grid {
+      flex: 1;
+      align-items: center;
+    }
+
+    .hero__text {
+      grid-column: col 1 / span 6;
+      grid-row: 1;
+      padding: 0 0 40px;
+      container-type: inline-size;
+    }
+
+    .hero__title {
+      max-width: none;
+      margin-top: 26px;
+      font-size: clamp(2.75rem, 11.4cqi, 5rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .hero__lead {
+      max-width: 33ch;
+      margin-top: 30px;
+    }
+
+    .hero__text :global(.hero__cta) {
+      margin-top: 40px;
+    }
+
+    .hero__figure {
+      grid-column: col 7 / span 6;
+      grid-row: 1;
+      justify-self: end;
+      width: min(100%, calc(min(76svh, 800px) * 0.8));
+      padding: 0;
+    }
+
+    .hero__frame {
+      height: auto;
+      aspect-ratio: 4 / 5;
+    }
+
+    .hero :global(.hero__tag) {
+      left: 13%;
+    }
+  }
+
+  /* ---------- Movimento ---------- */
+  /* A foto assenta devagar quando a página abre; a etiqueta entra balançando
+     (motion.ts). O título não anima, para não atrasar a primeira pintura. */
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero__layer :global(img) {
+      animation: hero-settle 1.4s var(--ease-soft) both;
+    }
+
+    .hero__label,
+    .hero__lead,
+    .hero__text :global(.hero__cta) {
+      animation: hero-rise 0.9s var(--ease-soft) both;
+    }
+
+    .hero__lead { animation-delay: 100ms; }
+    .hero__text :global(.hero__cta) { animation-delay: 180ms; }
+
+    /* Parallax: a sala desce mais devagar que a página; a poltrona recortada, menos. */
+    :global(.js:not(.lite)) .hero__layer--back {
+      translate: 0 calc(var(--p) * 9%);
+    }
+
+    :global(.js:not(.lite)) .hero__layer--front {
+      translate: 0 calc(var(--p) * 4%);
+    }
+  }
+
+  @keyframes hero-settle {
+    from {
+      scale: 1.05;
+    }
+  }
+
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      translate: 0 14px;
+    }
+  }
+</style>

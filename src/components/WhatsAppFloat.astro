@@ -1,0 +1,126 @@
+---
+import WhatsAppIcon from "./icons/WhatsAppIcon.astro";
+import { whatsappMessages, whatsappUrl } from "../lib/whatsapp";
+
+interface Props {
+  /** Na home só aparece depois do hero, que já tem o botão. */
+  deferred?: boolean;
+}
+
+const { deferred = false } = Astro.props;
+---
+
+<aside class="wa-float-region" aria-label="Atalho para o WhatsApp">
+  <a
+    class="wa-float"
+    href={whatsappUrl(whatsappMessages.floating)}
+    target="_blank"
+    rel="noopener"
+    data-wa-float
+    data-deferred={deferred ? "" : undefined}
+    data-track="whatsapp"
+    data-placement="floating"
+  >
+    <WhatsAppIcon class="wa-float__icon" />
+    <span class="wa-float__label">Chamar no WhatsApp</span><span class="sr-only"> (abre em nova aba)</span>
+  </a>
+</aside>
+
+<style>
+  .wa-float {
+    --focus: var(--c-caramel);
+    position: fixed;
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    height: 56px;
+    border-radius: 999px;
+    background: var(--c-brand);
+    color: var(--c-cream);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-decoration: none;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgb(196 142 82 / 0.55),
+      0 14px 30px -14px rgb(6 28 25 / 0.55);
+    transition:
+      opacity var(--t-mid) var(--ease),
+      translate var(--t-mid) var(--ease),
+      visibility var(--t-mid),
+      background-color var(--t-fast) var(--ease);
+  }
+
+  .wa-float:hover {
+    background: var(--c-brand-hover);
+  }
+
+  .wa-float :global(.wa-float__icon) {
+    flex: none;
+    width: 24px;
+    height: 24px;
+    margin: 0 16px;
+    fill: currentColor;
+  }
+
+  /* No celular só o círculo; no desktop o rótulo abre ao passar o mouse ou com o foco. */
+  .wa-float__label {
+    max-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    transition:
+      max-width var(--t-mid) var(--ease),
+      padding var(--t-mid) var(--ease);
+  }
+
+  @media (hover: hover) and (min-width: 1024px) {
+    .wa-float:hover .wa-float__label,
+    .wa-float:focus-visible .wa-float__label {
+      max-width: 200px;
+      padding-right: 22px;
+    }
+  }
+
+  :global(.js) .wa-float[data-deferred]:not(.is-ready),
+  .wa-float.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    translate: 0 14px;
+  }
+
+  /* No celular, enquanto o aviso de cookies ocupa a borda de baixo, o botão espera:
+     assim um não cobre o outro e nada muda de lugar na tela. */
+  @media (max-width: 1023px) {
+    :global(.consent-pending) .wa-float {
+      display: none;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .wa-float {
+      right: 28px;
+      bottom: 28px;
+    }
+  }
+</style>
+
+<script>
+  // Esconde o botão enquanto o hero (na home), o fechamento, o rodapé ou outro botão
+  // de WhatsApp estão na tela: ali já existe o caminho, e o círculo não cobre o botão.
+  const float = document.querySelector<HTMLElement>("[data-wa-float]");
+  if (float && "IntersectionObserver" in window) {
+    const watched = [
+      ...document.querySelectorAll("[data-hero], [data-float-hide], main [data-track='whatsapp']"),
+    ];
+    const visible = new Map<Element, boolean>();
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) visible.set(entry.target, entry.isIntersecting);
+      float.classList.toggle("is-hidden", [...visible.values()].some(Boolean));
+      float.classList.add("is-ready");
+    });
+    watched.forEach((element) => observer.observe(element));
+    if (watched.length === 0) float.classList.add("is-ready");
+  }
+</script>

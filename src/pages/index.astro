@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/home/Hero.astro";
+import Recovery from "../components/home/Recovery.astro";
+import Movements from "../components/home/Movements.astro";
+import ChairStory from "../components/sections/ChairStory.astro";
+import HowItWorks from "../components/home/HowItWorks.astro";
+import Process from "../components/sections/Process.astro";
+import Founder from "../components/home/Founder.astro";
+import HomeTips from "../components/home/HomeTips.astro";
+import HomeFaq from "../components/home/HomeFaq.astro";
+import Closing from "../components/sections/Closing.astro";
+import { chairPhotos } from "../data/poltrona";
+import { serviceSchema } from "../lib/schema";
+---
+
+<BaseLayout
+  home
+  schema={[serviceSchema()]}
+  title="Aluguel de poltrona pós-operatório em Canoas e Porto Alegre | BruckerCare"
+  description="Aluguel de poltrona elétrica para a recuperação de cirurgias em geral, inclusive plásticas. Entrega e retirada em casa em Canoas, Porto Alegre e região."
+>
+  <Hero />
+  <Recovery />
+  <Movements />
+  <ChairStory
+    label="a poltrona"
+    titleHtml="O que é uma <em>poltrona de recuperação</em>?"
+    steps={[
+      {
+        photo: chairPhotos.studio,
+        short: "a poltrona",
+        title: "O que é uma poltrona de recuperação?",
+        text: "É uma poltrona elétrica pensada para cuidar de você em cada momento do dia, com reclinação eletrônica e apoio para as pernas. Ela ajusta a posição de forma simples e confortável e deixa os momentos de descanso mais agradáveis.",
+      },
+      {
+        photo: chairPhotos.reclined,
+        short: "reclinação",
+        title: "Reclinação elétrica e apoio para as pernas",
+        text: "O encosto reclina e o apoio para as pernas sobe pelo comando elétrico. Assim, os movimentos do dia a dia que podem exigir mais do corpo ficam mais práticos.",
+      },
+      {
+        photo: chairPhotos.remote,
+        short: "controle",
+        title: "Um toque no controle",
+        text: "Com apenas um toque no controle, você encontra a posição ideal para descansar.",
+      },
+    ]}
+    motto="Cuidado, conforto e autonomia para você."
+    link={{ href: "/a-poltrona", label: "Ver os detalhes da poltrona" }}
+  />
+  <HowItWorks />
+  <Process />
+  <Founder />
+  <HomeTips />
+  <HomeFaq />
+  <Closing placement="homeClosing" />
+</BaseLayout>

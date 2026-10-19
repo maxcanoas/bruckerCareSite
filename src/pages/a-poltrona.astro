@@ -1,0 +1,471 @@
+---
+// A poltrona (posts 3, 7, 8 e 12). Abertura no verde com a foto de estúdio,
+// a narrativa das funções no papel, as cores como amostras de couro, a locação
+// em 6 passos, o processo com a etiqueta, o que vem junto e o fechamento.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Frame from "../components/Frame.astro";
+import Photo from "../components/Photo.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+import ChairStory from "../components/sections/ChairStory.astro";
+import Process from "../components/sections/Process.astro";
+import Closing from "../components/sections/Closing.astro";
+import { company } from "../data/empresa";
+import { rentalSteps } from "../data/locacao";
+import { chairColors, chairPhotos, deliveryItems } from "../data/poltrona";
+import { breadcrumbSchema, serviceSchema } from "../lib/schema";
+---
+
+<BaseLayout
+  schema={[serviceSchema(), breadcrumbSchema("A poltrona", "/a-poltrona")]}
+  title="Poltrona elétrica para recuperação pós-operatória | BruckerCare"
+  description="Poltrona elétrica com reclinação e apoio para as pernas, para a recuperação de cirurgias, inclusive plásticas. Aluguel com entrega e retirada em Canoas e região."
+>
+  <section class="chair-hero tone-dark" aria-labelledby="chair-title">
+    <div class="grid chair-hero__grid">
+      <div class="chair-hero__text">
+        <span class="label">a poltrona</span>
+        <h1 id="chair-title" class="chair-hero__title heading">
+          Poltrona elétrica para <em>a recuperação em casa</em>.
+        </h1>
+        <p class="chair-hero__lead">
+          Reclinação eletrônica, apoio para as pernas e ajuste com um toque no controle. Para o período de recuperação, com
+          entrega e retirada em {company.serviceArea}.
+        </p>
+        <WhatsAppButton class="chair-hero__cta" placement="chairIntro" label="Consultar disponibilidade" />
+      </div>
+      <Frame
+        class="chair-hero__photo"
+        name={chairPhotos.studio.name}
+        alt={chairPhotos.studio.alt}
+        widths={[480, 720, 928]}
+        sizes="(min-width: 1024px) 40vw, 92vw"
+        ratio="4 / 5"
+        priority
+      />
+    </div>
+  </section>
+
+  <ChairStory
+    tone="paper"
+    sheet
+    label="as funções"
+    titleHtml="Como ela <em>se ajusta a você</em>"
+    steps={[
+      {
+        photo: chairPhotos.room,
+        short: "em casa",
+        pos: "64% 50%",
+        title: "Como ela se ajusta a você",
+        text: "A poltrona foi pensada para oferecer mais praticidade e conforto no período de recuperação, facilitando os momentos do dia a dia que podem exigir mais do corpo.",
+      },
+      {
+        photo: chairPhotos.reclined,
+        short: "reclinação",
+        title: "Reclinação eletrônica e apoio para as pernas",
+        text: "O encosto reclina e o apoio para as pernas se estende pelo comando elétrico, de forma simples e confortável. Você descansa na posição que preferir, com as pernas apoiadas.",
+      },
+      {
+        photo: chairPhotos.remote,
+        short: "controle",
+        title: "Um toque no controle",
+        text: "Com apenas um toque no controle, você encontra a posição ideal. O controle tem fio, então fica sempre ao alcance.",
+      },
+      {
+        photo: chairPhotos.armButtons,
+        short: "botões",
+        title: "Botões no braço",
+        text: "Na lateral do braço, um painel com dois botões também ajusta a posição, sem precisar procurar o controle.",
+      },
+    ]}
+    motto="Cuidado, conforto e autonomia para você."
+  />
+
+  <section class="colors tone-linen sheet" aria-labelledby="colors-title">
+    <div class="grid colors__grid">
+      <div class="colors__head">
+        <span class="label">cores</span>
+        <h2 id="colors-title" class="heading t-h2">Cores <em>disponíveis</em></h2>
+        <p>A poltrona é a mesma nas quatro cores. A cor depende da disponibilidade na data.</p>
+      </div>
+
+      <ul class="colors__list">
+        {
+          chairColors.map((color) => (
+            <li class="colors__item">
+              <span class="colors__swatch" style={`--chip:${color.hex}`} aria-hidden="true" />
+              <span class="colors__name">{color.name}</span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <figure class="colors__photo">
+        <div class="frame" style="--ratio: 16 / 9">
+          <div class="frame__media">
+            <Photo
+              name="cores-poltronas"
+              alt="As quatro cores da poltrona lado a lado: preto, verde, bege e marrom."
+              widths={[768, 1376]}
+              sizes="(min-width: 1024px) 66vw, 92vw"
+              ratio="16:9"
+            />
+          </div>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <section class="rental tone-paper sheet" aria-labelledby="rental-title">
+    <div class="grid rental__grid">
+      <div class="rental__head">
+        <span class="label">como funciona</span>
+        <h2 id="rental-title" class="heading t-h2">Como funciona <em>o aluguel</em></h2>
+        <p>Do primeiro contato à retirada, você tem suporte durante todo o processo.</p>
+      </div>
+
+      <ol class="rental__list">
+        {
+          rentalSteps.map((step, i) => (
+            <li class="rental__item" data-reveal="rise" style={`--d:${i % 3}`}>
+              <span class="num rental__num">{String(i + 1).padStart(2, "0")}</span>
+              <h3 class="t-h3">{step.title}</h3>
+              <p>
+                {step.text}
+                {step.closing && <strong> {step.closing}</strong>}
+              </p>
+            </li>
+          ))
+        }
+      </ol>
+
+      <div class="rental__cta">
+        <WhatsAppButton placement="chairRental" label="Consultar disponibilidade" />
+      </div>
+    </div>
+  </section>
+
+  <Process tone="linen" />
+
+  <section class="delivery tone-paper sheet" aria-labelledby="delivery-title">
+    <div class="grid delivery__grid">
+      <div class="delivery__head">
+        <span class="label">na entrega</span>
+        <h2 id="delivery-title" class="heading t-h2">O que vem <em>junto</em></h2>
+        <p class="delivery__more">
+          Ficou alguma dúvida? Veja as <a href="/perguntas-frequentes">perguntas frequentes</a>.
+        </p>
+      </div>
+      <ul class="delivery__list">
+        {
+          deliveryItems.map((item) => (
+            <li class="delivery__item">
+              <span class="delivery__check" aria-hidden="true" />
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <Closing placement="chairClosing" />
+</BaseLayout>
+
+<style>
+  /* ---------- Abertura no verde ---------- */
+
+  .chair-hero {
+    padding-block: calc(var(--header-h) + 36px) 88px;
+  }
+
+  .chair-hero__text > * + * {
+    margin-top: 20px;
+  }
+
+  .chair-hero__title {
+    margin-top: 22px;
+    font-size: clamp(2.25rem, 1.6rem + 2.9vw, 4.25rem);
+    line-height: 1.04;
+    letter-spacing: -0.038em;
+  }
+
+  .chair-hero__lead {
+    max-width: 40ch;
+    color: var(--fg-soft);
+  }
+
+  .chair-hero__text :global(.chair-hero__cta) {
+    margin-top: 32px;
+  }
+
+  .chair-hero :global(.chair-hero__photo) {
+    margin-top: 48px;
+  }
+
+  @media (min-width: 768px) {
+    .chair-hero :global(.chair-hero__photo) {
+      width: min(100%, 520px);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .chair-hero {
+      display: flex;
+      align-items: center;
+      min-height: min(100svh, 980px);
+      padding-block: calc(var(--header-h) + 32px) 72px;
+    }
+
+    .chair-hero__grid {
+      flex: 1;
+      align-items: center;
+    }
+
+    .chair-hero__text {
+      grid-column: col 1 / span 6;
+      grid-row: 1;
+    }
+
+    .chair-hero :global(.chair-hero__photo) {
+      grid-column: col 8 / span 5;
+      grid-row: 1;
+      justify-self: end;
+      width: min(100%, calc(min(74svh, 760px) * 0.8));
+      margin-top: 0;
+    }
+  }
+
+  /* ---------- Cores: amostras de couro com pesponto ---------- */
+
+  .colors {
+    padding-block: 104px 120px;
+  }
+
+  .colors__head > * + * {
+    margin-top: 18px;
+  }
+
+  .colors__head .heading {
+    margin-top: 20px;
+  }
+
+  .colors__head p {
+    max-width: 40ch;
+    color: var(--fg-soft);
+  }
+
+  .colors__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px var(--gutter);
+    margin-top: 44px;
+  }
+
+  .colors__swatch {
+    position: relative;
+    display: block;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--r-m);
+    background:
+      radial-gradient(120% 90% at 22% 12%, rgb(255 255 255 / 0.16), transparent 55%),
+      var(--chip);
+    box-shadow: inset 0 0 0 1px rgb(34 31 27 / 0.08);
+  }
+
+  /* O pesponto da amostra */
+  .colors__swatch::after {
+    content: "";
+    position: absolute;
+    inset: 9px;
+    border: 1.5px dashed rgb(255 255 255 / 0.3);
+    border-radius: calc(var(--r-m) - 6px);
+  }
+
+  .colors__name {
+    display: block;
+    margin-top: 12px;
+    color: var(--heading);
+    font-weight: 500;
+  }
+
+  .colors__photo {
+    grid-column: content;
+    margin-top: 56px;
+  }
+
+  @media (min-width: 768px) {
+    .colors__head { grid-column: col 1 / span 4; }
+
+    .colors__list {
+      grid-column: col 5 / span 4;
+      margin-top: 0;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .colors {
+      padding-block: 160px 176px;
+    }
+
+    .colors__head { grid-column: col 1 / span 5; }
+
+    .colors__list {
+      grid-column: col 7 / span 6;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      align-self: end;
+    }
+
+    .colors__photo {
+      grid-column: col 2 / span 10;
+      margin-top: 96px;
+    }
+  }
+
+  /* ---------- Locação em 6 passos ---------- */
+
+  .rental {
+    padding-block: 104px 120px;
+  }
+
+  .rental__head > * + * {
+    margin-top: 18px;
+  }
+
+  .rental__head .heading {
+    margin-top: 20px;
+  }
+
+  .rental__head p {
+    max-width: 40ch;
+    color: var(--fg-soft);
+  }
+
+  .rental__list {
+    display: grid;
+    gap: 16px;
+    margin-top: 44px;
+  }
+
+  .rental__item {
+    padding: 26px 24px 28px;
+    border-radius: var(--r-l);
+    background: var(--c-shell);
+    box-shadow: inset 0 0 0 1px rgb(8 43 39 / 0.07);
+  }
+
+  .rental__item > * + * {
+    margin-top: 10px;
+  }
+
+  .rental__num {
+    margin-bottom: 16px;
+    font-size: 2.5rem;
+  }
+
+  .rental__item p {
+    max-width: 48ch;
+    color: var(--fg-soft);
+  }
+
+  .rental__item strong {
+    font-weight: 500;
+    color: var(--c-brand);
+  }
+
+  .rental__cta {
+    margin-top: 40px;
+  }
+
+  @media (min-width: 768px) {
+    .rental__list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--gutter);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .rental {
+      padding-block: 160px 176px;
+    }
+
+    .rental__head {
+      grid-column: col 1 / span 6;
+    }
+
+    .rental__list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 64px;
+    }
+
+    .rental__item {
+      padding: 36px 32px 40px;
+    }
+
+    .rental__cta {
+      margin-top: 56px;
+    }
+  }
+
+  /* ---------- O que vem junto ---------- */
+
+  .delivery {
+    padding-block: 104px 120px;
+  }
+
+  .delivery__head > * + * {
+    margin-top: 18px;
+  }
+
+  .delivery__head .heading {
+    margin-top: 20px;
+  }
+
+  .delivery__more {
+    color: var(--fg-soft);
+  }
+
+  .delivery__more a {
+    color: var(--heading);
+    font-weight: 500;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+  }
+
+  .delivery__list {
+    margin-top: 40px;
+    border-top: 1px solid var(--line);
+  }
+
+  .delivery__item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-block: 20px;
+    border-bottom: 1px solid var(--line);
+    font-size: var(--fs-lead);
+  }
+
+  .delivery__check {
+    flex: none;
+    width: 22px;
+    height: 22px;
+    border: 1px solid var(--c-caramel);
+    border-radius: 50%;
+  }
+
+  @media (min-width: 1024px) {
+    .delivery {
+      padding-block: 152px 168px;
+    }
+
+    .delivery__head {
+      grid-column: col 1 / span 5;
+    }
+
+    .delivery__list {
+      grid-column: col 7 / span 6;
+      grid-row: 1;
+      margin-top: 0;
+    }
+  }
+</style>

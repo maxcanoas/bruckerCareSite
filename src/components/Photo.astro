@@ -1,0 +1,40 @@
+---
+// Foto pelo nome do arquivo (sem extensão). Sai em AVIF e WebP com srcset.
+// Se o arquivo ainda não existir, mostra o placeholder com o nome esperado.
+import { Picture } from "astro:assets";
+import { photo } from "../lib/photos";
+
+interface Props {
+  name: string;
+  alt: string;
+  widths: number[];
+  sizes: string;
+  ratio: string;
+  priority?: boolean;
+}
+
+const { name, alt, widths, sizes, ratio, priority = false } = Astro.props;
+const src = photo(name);
+// Nunca amplia: larguras acima da foto viram a largura da própria foto.
+const usable = src ? [...new Set(widths.map((w) => Math.min(w, src.width)))] : [];
+---
+
+{
+  src ? (
+    <Picture
+      src={src}
+      alt={alt}
+      widths={usable}
+      sizes={sizes}
+      formats={["avif", "webp"]}
+      loading={priority ? "eager" : "lazy"}
+      fetchpriority={priority ? "high" : undefined}
+      decoding="async"
+    />
+  ) : (
+    <div class="placeholder" data-placeholder role="img" aria-label={alt}>
+      <strong>{name}</strong>
+      <span>{ratio}</span>
+    </div>
+  )
+}

@@ -1,0 +1,57 @@
+---
+// Página não encontrada. Fora da busca (noindex) e do sitemap.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+---
+
+<BaseLayout title="Página não encontrada | BruckerCare" description="Esta página não existe ou mudou de endereço." noindex>
+  <section class="not-found tone-paper" aria-labelledby="not-found-title">
+    <div class="grid">
+      <div class="not-found__text">
+        <span class="label">página não encontrada</span>
+        <h1 id="not-found-title" class="not-found__title heading">Esta página <em>não existe</em>.</h1>
+        <p class="not-found__lead t-lead">
+          O endereço pode ter mudado. Você pode voltar ao início ou falar direto com a BruckerCare.
+        </p>
+        <div class="not-found__actions">
+          <WhatsAppButton placement="footer" label="Chamar no WhatsApp" />
+          <a class="link" href="/">Voltar para o início</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    min-height: 82svh;
+    padding-block: calc(var(--header-h) + 96px) 120px;
+  }
+
+  .not-found__title {
+    margin-top: 22px;
+    font-size: clamp(2.25rem, 1.6rem + 2.8vw, 4rem);
+    line-height: 1.04;
+    letter-spacing: -0.038em;
+  }
+
+  .not-found__lead {
+    max-width: 44ch;
+    margin-top: 20px;
+    color: var(--fg-soft);
+  }
+
+  .not-found__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px 32px;
+    margin-top: 36px;
+  }
+
+  @media (min-width: 1024px) {
+    .not-found__text {
+      grid-column: col 1 / span 7;
+    }
+  }
+</style>

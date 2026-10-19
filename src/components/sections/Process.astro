@@ -1,0 +1,326 @@
+---
+// Antes de cada entrega, existe um processo (posts 7, 8 e 16).
+// A costura: um pesponto caramelo se desenha com a rolagem, preenche o ponto de
+// cada etapa e termina no alfinete da etiqueta "higienizada e pronta para você",
+// a mesma que aparece no hero. No desktop a costura corre na horizontal; no
+// celular desce pela margem e faz a curva até a etiqueta.
+import Frame from "../Frame.astro";
+import Tag from "../Tag.astro";
+import { company } from "../../data/empresa";
+
+interface Props {
+  tone?: "paper" | "linen";
+}
+
+const { tone = "paper" } = Astro.props;
+
+const steps = [
+  { title: "Conferência", text: "Cada equipamento é inspecionado e verificado antes de seguir para o próximo passo." },
+  { title: "Higienização", text: "A poltrona passa por higienização e sanitização. A limpeza adequada faz parte da preparação." },
+  { title: "Preparação", text: "Tudo é organizado para que a poltrona esteja pronta para ser usada." },
+  { title: "Entrega", text: "Depois de preparada, ela segue até a casa de quem precisa de mais conforto e apoio na recuperação." },
+];
+---
+
+<section class:list={["process sheet", `tone-${tone}`]} aria-labelledby="process-title">
+  <div class="grid process__grid">
+    <header class="process__head">
+      <span class="label" data-reveal="rise">o processo</span>
+      <h2 id="process-title" class="heading t-h2" data-reveal="rise">
+        Antes de chegar até você, cada poltrona passa <em>por esse processo</em>.
+      </h2>
+      <p class="process__intro" data-reveal="rise" style="--d:1">
+        Higienização, sanitização, inspeção e preparação. Para a {company.name}, essas etapas não são só operacionais:
+        fazem parte do padrão que escolhemos oferecer em cada atendimento.
+      </p>
+    </header>
+
+    <Frame
+      class="process__photo process__photo--check"
+      name="inspecao-mecanismo"
+      alt="Técnico de camiseta verde ajoelhado ao lado de uma poltrona marrom reclinada, verificando o mecanismo por baixo do assento."
+      widths={[480, 720, 960, 1264]}
+      sizes="(min-width: 1024px) 52vw, 92vw"
+      ratio="3 / 2"
+      parallax={-6}
+      reveal
+    />
+
+    <Frame
+      class="process__photo process__photo--clean"
+      name="higienizacao"
+      alt="Mãos com luvas brancas limpando com um pano a almofada do encosto de uma poltrona caramelo, que tem uma etiqueta de papel kraft pendurada."
+      widths={[400, 560, 760]}
+      sizes="(min-width: 1024px) 30vw, 72vw"
+      ratio="4 / 5"
+      parallax={-12}
+      reveal
+    />
+
+    <div class="process__track" data-range="center" data-process>
+      <span class="process__seam" aria-hidden="true">
+        <span class="process__seam-line process__seam-line--base"></span>
+        <span class="process__seam-line process__seam-line--fill" data-process-line></span>
+      </span>
+
+      <ol class="process__steps">
+        {
+          steps.map((step, i) => (
+            <li class="process__step">
+              <span class="process__knot" data-process-dot aria-hidden="true" />
+              <span class="num process__num">{String(i + 1).padStart(2, "0")}</span>
+              <h3 class="t-h3">{step.title}</h3>
+              <p>{step.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+
+      <div class="process__end">
+        <Tag class="process__tag" sway start={0} />
+      </div>
+    </div>
+
+    <p class="process__statement heading t-display" data-reveal="rise">
+      <span>A poltrona é o equipamento.</span>
+      <em>O cuidado é o nosso trabalho.</em>
+    </p>
+  </div>
+</section>
+
+<style>
+  .process {
+    --seam-x: 5px; /* centro da costura no celular */
+    --pad-l: 36px; /* recuo das etapas em relação à costura */
+    --turn: 28px; /* no celular, a altura da curva dentro do fim da trilha */
+    --end-h: 232px; /* espaço da etiqueta no fim da trilha (celular) */
+    --stitch: var(--c-caramel);
+    padding-block: 104px 120px;
+  }
+
+  .process__head > * + * {
+    margin-top: 18px;
+  }
+
+  .process__head .heading {
+    margin-top: 20px;
+  }
+
+  .process__intro {
+    max-width: 48ch;
+    color: var(--fg-soft);
+  }
+
+  .process :global(.process__photo--check) {
+    margin-top: 56px;
+  }
+
+  .process :global(.process__photo--clean) {
+    grid-column: col 2 / content-end;
+    margin-top: 20px;
+  }
+
+  /* ---------- A costura (celular: desce pela margem e faz a curva até a etiqueta) ---------- */
+
+  .process__track {
+    position: relative;
+    margin-top: 72px;
+    padding-left: var(--pad-l);
+  }
+
+  /* Um L tracejado: desce pela margem, faz a curva e segue até o alfinete. */
+  .process__seam {
+    position: absolute;
+    top: 9px;
+    left: calc(var(--seam-x) - 1px);
+    right: 50%;
+    bottom: calc(var(--end-h) - var(--turn) - 1px);
+  }
+
+  .process__seam-line {
+    position: absolute;
+    inset: 0;
+    border-left: 2px dashed;
+    border-bottom: 2px dashed;
+    border-bottom-left-radius: 20px;
+  }
+
+  .process__seam-line--base {
+    border-color: var(--line);
+  }
+
+  .process__seam-line--fill {
+    border-color: var(--stitch);
+  }
+
+  .process__steps {
+    display: grid;
+    gap: 56px;
+  }
+
+  .process__step {
+    position: relative;
+  }
+
+  .process__step > * + * {
+    margin-top: 10px;
+  }
+
+  .process__step p {
+    max-width: 40ch;
+    color: var(--fg-soft);
+  }
+
+  .process__knot {
+    position: absolute;
+    top: 4px;
+    left: calc(var(--seam-x) - var(--pad-l) - 6px);
+    width: 12px;
+    height: 12px;
+    border: 1.5px solid var(--c-caramel);
+    border-radius: 50%;
+    background: var(--c-caramel);
+  }
+
+  .process__num {
+    margin-bottom: 12px;
+    font-size: 2.25rem;
+  }
+
+  /* O fim da trilha: a etiqueta pende do alfinete, no fim da costura. */
+  .process__end {
+    position: relative;
+    height: var(--end-h);
+    margin-left: calc(-1 * var(--pad-l));
+  }
+
+  .process__end :global(.process__tag) {
+    top: var(--turn);
+    left: calc(50% - 44px);
+  }
+
+  .process__statement {
+    margin-top: 120px;
+  }
+
+  .process__statement > * {
+    display: block;
+  }
+
+  /* ---------- Desktop: fotos em díptico e a costura na horizontal ---------- */
+
+  @media (min-width: 1024px) {
+    .process {
+      --track-pad: 44px; /* da costura até o número das etapas */
+      --tag-col: 160px;
+      padding-block: 160px 176px;
+    }
+
+    .process__head {
+      grid-column: col 1 / span 6;
+      grid-row: 1;
+    }
+
+    .process :global(.process__photo--check) {
+      grid-column: col 1 / span 7;
+      grid-row: 2;
+      margin-top: 72px;
+    }
+
+    .process :global(.process__photo--clean) {
+      grid-column: col 9 / span 4;
+      grid-row: 1 / span 2;
+      align-self: end;
+      margin-top: 0;
+    }
+
+    .process__track {
+      grid-column: content;
+      grid-row: 3;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) var(--tag-col);
+      margin-top: 136px;
+      padding: var(--track-pad) 0 0;
+    }
+
+    /* A costura corre por cima das etapas e termina no alfinete da etiqueta. */
+    .process__seam {
+      top: 0;
+      left: 6px;
+      right: calc(var(--tag-col) / 2);
+      bottom: auto;
+      height: 2px;
+    }
+
+    .process__seam-line {
+      border: 0;
+      border-top: 2px dashed;
+      border-radius: 0;
+    }
+
+    .process__seam-line--base {
+      border-color: var(--line);
+    }
+
+    .process__seam-line--fill {
+      border-color: var(--stitch);
+    }
+
+    .process__steps {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--gutter);
+    }
+
+    .process__step {
+      padding-right: 8px;
+    }
+
+    .process__knot {
+      top: calc(-1 * var(--track-pad) - 5px);
+      left: 0;
+    }
+
+    .process__end {
+      height: auto;
+      min-height: 230px;
+      margin: 0;
+    }
+
+    .process__end :global(.process__tag) {
+      top: calc(-1 * var(--track-pad) + 1px);
+      left: calc(50% - 52px);
+    }
+
+    .process__statement {
+      grid-column: col 1 / span 10;
+      margin-top: 200px;
+    }
+  }
+
+  /* ---------- Movimento: a costura se desenha com a rolagem ---------- */
+  /* Sem movimento: costura inteira e pontos cheios. */
+
+  @media (prefers-reduced-motion: no-preference) {
+    /* Celular: primeiro desce (até 85% do progresso), depois vira até a etiqueta. */
+    :global(.js) .process__seam-line--fill {
+      --v: clamp(0, var(--p) / 0.85, 1);
+      --h: clamp(0, (var(--p) - 0.85) / 0.15, 1);
+      clip-path: inset(0 calc((1 - var(--h)) * (100% - 4px)) calc((1 - var(--v)) * 100%) 0);
+    }
+
+    :global(.js) .process__knot {
+      --fill: clamp(0, (var(--p) - var(--at, 0) * 0.85) * 30, 1);
+      background: color-mix(in srgb, var(--c-caramel) calc(var(--fill) * 100%), var(--bg));
+    }
+
+    @media (min-width: 1024px) {
+      :global(.js) .process__seam-line--fill {
+        clip-path: inset(0 calc((1 - var(--p)) * 100%) 0 0);
+      }
+
+      :global(.js) .process__knot {
+        --fill: clamp(0, (var(--p) - var(--at, 0)) * 30, 1);
+      }
+    }
+  }
+</style>

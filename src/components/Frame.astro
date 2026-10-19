@@ -1,0 +1,39 @@
+---
+// Foto num quadro com a proporção dela e cantos macios.
+// parallax: a foto desliza devagar dentro do quadro com a rolagem (um número
+// muda o percurso; o padrão é 8%, negativo para subir mais devagar que a página).
+// reveal: a foto se descobre de baixo para cima quando entra na tela.
+import Photo from "./Photo.astro";
+
+interface Props {
+  name: string;
+  alt: string;
+  widths: number[];
+  sizes: string;
+  /** Proporção do quadro, por exemplo "3 / 2". */
+  ratio: string;
+  /** Parte da foto que fica no quadro quando ele corta (object-position). */
+  pos?: string;
+  parallax?: boolean | number;
+  reveal?: boolean;
+  priority?: boolean;
+  class?: string;
+}
+
+const { name, alt, widths, sizes, ratio, pos, parallax = false, reveal = false, priority = false, class: className } = Astro.props;
+const drift = typeof parallax === "number" ? `${parallax}%` : undefined;
+const style = [`--ratio:${ratio}`, pos && `--pos:${pos}`, drift && `--drift:${drift}`].filter(Boolean).join(";");
+const label = ratio.replace(/\s/g, "").replace("/", ":");
+---
+
+<div
+  class:list={["frame", className]}
+  style={style}
+  data-range={parallax ? "cover" : undefined}
+  data-parallax={parallax ? "" : undefined}
+  data-reveal={reveal ? "unveil" : undefined}
+>
+  <div class="frame__media">
+    <Photo name={name} alt={alt} widths={widths} sizes={sizes} ratio={label} priority={priority} />
+  </div>
+</div>
