@@ -33,7 +33,7 @@ Enquanto não houver resposta, o texto do site leva lorem ipsum no lugar, e o bu
 
 ## Para o Maxwell
 
-- [ ] **Aprovar o redesenho (versão 2)** e mostrar à Pâmela. A versão 1 inteira está em `D:\Freelas\bruckerCareSite-v1`; pode ser apagada depois da aprovação (ou guardada num commit, se preferir).
+- [ ] **Mostrar o redesenho (versão 2) à Pâmela.** Aprovado pelo Maxwell em 19/10/2026 e enviado ao GitHub. A versão 1 só existe em `D:\Freelas\bruckerCareSite-v1` (não entrou no histórico do git); pode ser apagada quando não for mais necessária.
 - [ ] Confirmar se o plano HostGator da Brucker Printers aceita domínio adicional (no Brasil, o Plano P aceita 1 site; M e Turbo aceitam vários).
 - [ ] Registrar `bruckercare.com.br` em nome da BruckerCare (pede CNPJ ou CPF do titular).
 - [ ] Apontar o DNS para o Cloudflare e o MX para a HostGator.
