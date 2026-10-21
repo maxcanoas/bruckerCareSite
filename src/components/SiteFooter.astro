@@ -56,6 +56,12 @@ const year = new Date().getFullYear();
       <a href="/politica-de-privacidade">Política de privacidade</a>
       {cookiePreferences && <button class="site-footer__cookies" type="button" data-consent-open>Preferências de cookies</button>}
       <p>© {year} {company.name}</p>
+      <p class="site-footer__credit">
+        Desenvolvido por
+        <a href="https://devmrmoraes.com.br" target="_blank" rel="noopener">
+          DEVMRMORAES<span class="sr-only"> (abre em nova aba)</span>
+        </a>
+      </p>
     </div>
   </div>
 </footer>
@@ -169,6 +175,7 @@ const year = new Date().getFullYear();
     .site-footer__col { grid-column: span 3; }
     .site-footer__col:first-of-type { grid-column: col 1 / span 2; }
     .site-footer__legal { grid-column: content; }
+    .site-footer__credit { margin-inline-start: auto; }
   }
 
   @media (min-width: 1024px) {

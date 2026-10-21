@@ -31,7 +31,7 @@ Todo o texto do site, por página e seção, para revisar com a cliente. Trechos
 - navegação: Início, A poltrona, Quem somos, Perguntas frequentes, Contato
 - contato: WhatsApp (51) 99863-1666 · Telefone (51) 99863-1666 · contato@bruckercare.com.br · Instagram @bruckercare
 - atendimento: Entrega e retirada em casa em Canoas, Porto Alegre e região. / Atendimento 24 horas.
-- Política de privacidade · Preferências de cookies · © 2026 BruckerCare
+- Política de privacidade · Preferências de cookies · © 2026 BruckerCare · Desenvolvido por DEVMRMORAES (link para https://devmrmoraes.com.br, abre em nova aba)
 
 **Aviso de cookies**
 - Usamos cookies de análise (Google Analytics) só com a sua permissão. Política de privacidade
