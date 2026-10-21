@@ -102,7 +102,7 @@ Os números "01" só aparecem onde a ordem importa: os 6 passos do aluguel e as 
 
 | Página | Composição |
 |---|---|
-| A poltrona | Abertura no verde com a foto de estúdio; a narrativa fixa no papel com 4 fotos (quarto, reclinada, controle, botões do braço); cores como amostras de couro com pesponto; os 6 passos em cartões; o processo com a etiqueta (no linho); o que vem junto; fechamento. |
+| A poltrona | Abertura no verde com a foto de estúdio; a narrativa fixa no papel com 4 fotos (quarto, reclinada, controle, botões do braço); cores como amostras de couro com pesponto; os 6 passos em cartões; o processo com a etiqueta (no linho); fechamento. |
 | Quem somos | Abertura só de texto grande, com o ícone de marca d'água; a história com a foto da Pâmela presa ao lado; "Conforto. Praticidade. Ambiente. Acolhimento." com os anéis; "Como trabalhamos" no linho; fechamento. |
 | Perguntas frequentes | Título e índice em pílulas presos à esquerda; grupos em sanfona; caixa verde "Não encontrou a sua dúvida?". |
 | Contato | Contatos diretos à esquerda e o formulário (que abre o WhatsApp) num painel de linho. |

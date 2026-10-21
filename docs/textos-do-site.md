@@ -30,8 +30,8 @@ Todo o texto do site, por página e seção, para revisar com a cliente. Trechos
 - Cuidado que começa antes mesmo da recuperação.
 - navegação: Início, A poltrona, Quem somos, Perguntas frequentes, Contato
 - contato: WhatsApp (51) 99863-1666 · Telefone (51) 99863-1666 · contato@bruckercare.com.br · Instagram @bruckercare
-- atendimento: Entrega e retirada em casa em Canoas, Porto Alegre e região. / *Horário: lorem ipsum.*
-- Política de privacidade · Preferências de cookies · *Razão social e CNPJ: lorem ipsum* · © 2026 BruckerCare
+- atendimento: Entrega e retirada em casa em Canoas, Porto Alegre e região. / Atendimento 24 horas.
+- Política de privacidade · Preferências de cookies · © 2026 BruckerCare
 
 **Aviso de cookies**
 - Usamos cookies de análise (Google Analytics) só com a sua permissão. Política de privacidade
@@ -170,11 +170,11 @@ Link: Conhecer a nossa história
 **Dúvidas comuns antes de alugar**
 Link: Ver todas as perguntas
 
-- **Qual é o período mínimo de aluguel?** *lorem ipsum*
-- **Em quanto tempo a poltrona chega?** *lorem ipsum*
-- **Quais cidades vocês atendem?** Canoas, Porto Alegre e região, com entrega e retirada em casa. *Lista exata das cidades: lorem ipsum.*
-- **Como é feita a higienização?** Antes de cada entrega, a poltrona passa por conferência, higienização, sanitização e preparação. *Detalhes: lorem ipsum.*
-- **Preciso de indicação médica para alugar?** *lorem ipsum.* As orientações sobre a sua recuperação, incluindo o uso de equipamentos de apoio, vêm sempre da sua equipe médica.
+- **Qual é o período mínimo de aluguel?** O período mínimo de aluguel é de 10 dias.
+- **Preciso de indicação médica para alugar?** As orientações sobre a sua recuperação, incluindo o uso de equipamentos de apoio, vêm sempre da sua equipe médica.
+- **Em quanto tempo a poltrona chega?** A poltrona é entregue no dia anterior à cirurgia, para que tudo já esteja organizado quando o paciente voltar para casa.
+- **Quais cidades vocês atendem?** Canoas, Porto Alegre e região, com entrega e retirada em casa.
+- **Como é feita a higienização?** Antes de cada entrega, a poltrona passa por conferência, higienização, sanitização e preparação. A higienização é feita com produtos de qualidade, que garantem a sanitização total da poltrona e, assim, a segurança de quem aluga.
 
 Não encontrou a sua dúvida? Botão: Perguntar no WhatsApp
 
@@ -271,15 +271,6 @@ Os mesmos 6 passos da página inicial, em lista. Botão: Consultar disponibilida
 ### O processo
 Igual ao da página inicial, com a etiqueta "higienizada e pronta para você".
 
-### O que vem junto
-*na entrega*
-
-**O que vem junto**
-
-*Lista: lorem ipsum (3 itens).*
-
-Ficou alguma dúvida? Veja as perguntas frequentes.
-
 ### Fechamento
 Igual ao da página inicial.
 
@@ -296,27 +287,24 @@ As respostas para o que mais perguntam antes de alugar a poltrona.
 Grupos: Locação · Entrega e retirada · Higiene e preparo · Valores e pagamento. Na lateral: "Ficou alguma dúvida?" e o botão "Perguntar no WhatsApp".
 
 **Locação**
-- **Qual é o período mínimo de aluguel?** *lorem ipsum*
+- **Qual é o período mínimo de aluguel?** O período mínimo de aluguel é de 10 dias.
 - **Para quais cirurgias a poltrona serve?** A poltrona pode ser usada na recuperação de cirurgias em geral, inclusive plásticas. Quem orienta o que é adequado para o seu caso é sempre a sua equipe médica.
-- **Preciso de indicação médica para alugar?** *lorem ipsum.* As orientações sobre a sua recuperação, incluindo o uso de equipamentos de apoio, vêm sempre da sua equipe médica.
-- **Quais cores estão disponíveis?** Preto, verde, bege e marrom. A cor depende da disponibilidade na data.
-- **Dá para renovar o período de aluguel?** *lorem ipsum*
-- **Existe contrato de locação?** *lorem ipsum*
+- **Preciso de indicação médica para alugar?** As orientações sobre a sua recuperação, incluindo o uso de equipamentos de apoio, vêm sempre da sua equipe médica.
+- **Dá para renovar o período de aluguel?** Sim. Se você entender que o pacote de dias escolhido não será suficiente, é possível renovar por mais dias.
+- **Existe contrato de locação?** Sim. Existe um termo de locação, com todas as informações sobre a locação contratada.
 
 **Entrega e retirada**
-- **Em quanto tempo a poltrona chega?** *lorem ipsum*
-- **Quais cidades vocês atendem?** Canoas, Porto Alegre e região, com entrega e retirada em casa. *Lista exata: lorem ipsum.*
-- **Quem instala a poltrona?** *lorem ipsum*
-- **O que vem junto na entrega?** *lorem ipsum*
-- **Como é a retirada?** Ao final do período combinado, a BruckerCare organiza a retirada do equipamento. Você não precisa se preocupar com o que fazer com a poltrona depois. *Detalhes: lorem ipsum.*
+- **Em quanto tempo a poltrona chega?** A poltrona é entregue no dia anterior à cirurgia, para que tudo já esteja organizado quando o paciente voltar para casa.
+- **Quais cidades vocês atendem?** Canoas, Porto Alegre e região, com entrega e retirada em casa.
+- **Quem instala a poltrona?** A poltrona é instalada pelo técnico capacitado que a leva até a casa do paciente.
+- **Como é a retirada?** Ao final do período combinado, a BruckerCare organiza a retirada do equipamento. Você não precisa se preocupar com o que fazer com a poltrona depois.
 
 **Higiene e preparo**
-- **Como é feita a higienização?** Antes de cada entrega, a poltrona passa por conferência, higienização, sanitização e preparação. *Detalhes: lorem ipsum.*
-- **A poltrona é conferida antes da entrega?** Sim. Antes de seguir para a entrega, cada equipamento é inspecionado e verificado.
+- **Como é feita a higienização?** Antes de cada entrega, a poltrona passa por conferência, higienização, sanitização e preparação. A higienização é feita com produtos de qualidade, que garantem a sanitização total da poltrona e, assim, a segurança de quem aluga.
 
 **Valores e pagamento**
 - **Quanto custa o aluguel?** O valor depende do período de aluguel. Fale com a BruckerCare pelo WhatsApp para consultar a disponibilidade e o valor para o seu caso.
-- **Quais são as formas de pagamento?** *lorem ipsum*
+- **Quais são as formas de pagamento?** Dinheiro, Pix, cartão de crédito e cartão de débito.
 
 **Não encontrou a sua dúvida?** Mande a sua pergunta pelo WhatsApp. A resposta vem da própria BruckerCare. Botão: Perguntar no WhatsApp
 
@@ -328,7 +316,7 @@ Grupos: Locação · Entrega e retirada · Higiene e preparo · Valores e pagame
 
 **Fale com a BruckerCare**
 
-Tire as suas dúvidas e consulte a disponibilidade da poltrona. O atendimento é pelo WhatsApp.
+Tire as suas dúvidas e consulte a disponibilidade da poltrona. O atendimento é pelo WhatsApp, 24 horas.
 
 Botão: Chamar no WhatsApp
 
@@ -336,7 +324,7 @@ Botão: Chamar no WhatsApp
 - E-mail: contato@bruckercare.com.br
 - Instagram: @bruckercare
 - Área de atendimento: Canoas, Porto Alegre e região, com entrega e retirada em casa.
-- Horário: *lorem ipsum*
+- Horário: Atendimento 24 horas.
 
 **Mande a sua mensagem**
 

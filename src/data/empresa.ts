@@ -17,11 +17,8 @@ export const company = {
   state: "RS",
   serviceArea: "Canoas, Porto Alegre e região",
 
-  // PENDENTE: cidades exatas que entram em "região".
-  serviceAreaDetail: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
-  // PENDENTE: horário de atendimento no WhatsApp e das entregas.
-  hours: "Lorem ipsum dolor sit amet, 00h às 00h.",
-  // PENDENTE: razão social e CNPJ.
+  hours: "Atendimento 24 horas.",
+  // PENDENTE: razão social e CNPJ (só na política de privacidade; o rodapé não mostra).
   legalName: "Lorem ipsum dolor sit amet",
   taxId: "CNPJ lorem ipsum",
 } as const;

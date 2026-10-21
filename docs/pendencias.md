@@ -2,7 +2,7 @@
 
 Lista viva. Tudo o que falta para o site ficar completo e correto. Nada aqui entra no site antes de ser confirmado. Decisões já fechadas estão em `decisoes.md`.
 
-Última atualização: 19/10/2026 (redesenho do frontend, versão 2).
+Última atualização: 20/10/2026 (respostas das perguntas frequentes).
 
 ---
 
@@ -10,18 +10,6 @@ Lista viva. Tudo o que falta para o site ficar completo e correto. Nada aqui ent
 
 Enquanto não houver resposta, o texto do site leva lorem ipsum no lugar, e o build de produção não publica.
 
-- [ ] Período mínimo de locação.
-- [ ] Prazo entre o pedido e a entrega.
-- [ ] Cidades atendidas, com exatidão (quais cidades são "região").
-- [ ] Horário de atendimento (WhatsApp e entregas).
-- [ ] Formas de pagamento.
-- [ ] Existe termo ou contrato de locação? Como é assinado?
-- [ ] Quem instala a poltrona e como é a instalação.
-- [ ] Precisa de indicação médica para alugar?
-- [ ] Dá para renovar o período? Como funciona?
-- [ ] O que vem junto na entrega (controle, cabo, capa, orientações de uso?).
-- [ ] Como é a retirada (agendamento, quem precisa estar em casa).
-- [ ] Detalhes da higienização que possam ser ditos no site (produtos, etapas), sem prometer o que não é feito.
 - [ ] Razão social e CNPJ da BruckerCare (política de privacidade e registro do domínio).
 - [ ] Nome e contato do responsável pelos dados pessoais (encarregado, LGPD).
 - [ ] Link do Perfil da Empresa no Google (para os dados estruturados e para ligar ao site).
@@ -43,7 +31,6 @@ Enquanto não houver resposta, o texto do site leva lorem ipsum no lugar, e o bu
 - [ ] **Publicação na HostGator:** subir o conteúdo de `dist/` (o build de produção) inteiro, inclusive o `.htaccess` (arquivo oculto), que serve `/quem-somos` a partir de `quem-somos.html`, força HTTPS sem www e define o cache. No Cloudflare, usar SSL "Full" (com "Flexible" o redirecionamento entra em laço).
 - [ ] **GA4:** colocar o ID em `.env` (`PUBLIC_GA4_ID=G-...`, modelo em `.env.example`) e gerar o build. No GA4: registrar as dimensões personalizadas `botao`, `pagina` e `formulario` (escopo de evento), marcar `clique_whatsapp`, `envio_formulario` e `clique_telefone` como eventos principais e definir a retenção de dados (o mesmo prazo vai para a política).
 - [ ] **Testar num iPhone de verdade (Safari iOS).** A versão 2 foi testada no motor WebKit (perfil iPhone 13), no Chrome e no Firefox; o WebKit para Windows não substitui o aparelho. Conferir principalmente a etiqueta que balança, as três seções fixas e o vidro do cabeçalho.
-- [ ] Quando o horário de atendimento for confirmado, ele entra também nos dados estruturados (`openingHours` em `src/lib/schema.ts`).
 - [ ] Com as respostas reais do FAQ, avaliar incluir os dados estruturados `FAQPage`.
 
 ## Material da marca

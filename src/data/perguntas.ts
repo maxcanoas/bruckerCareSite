@@ -1,7 +1,7 @@
 import { company } from "./empresa";
 
 // Perguntas frequentes, em grupos. `home: true` aparece também na página inicial.
-// Respostas em lorem ipsum esperam dados da cliente (docs/pendencias.md).
+// Respostas enviadas pela cliente em 20/10/2026.
 export interface Question {
   id: string;
   question: string;
@@ -26,7 +26,7 @@ export const questionGroups: QuestionGroup[] = [
       {
         id: "periodo-minimo",
         question: "Qual é o período mínimo de aluguel?",
-        answer: ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."],
+        answer: ["O período mínimo de aluguel é de 10 dias."],
         home: true,
       },
       {
@@ -40,23 +40,20 @@ export const questionGroups: QuestionGroup[] = [
       {
         id: "indicacao-medica",
         question: "Preciso de indicação médica para alugar?",
-        answer: ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.", medicalTeam],
+        answer: [medicalTeam],
         home: true,
-      },
-      {
-        id: "cores",
-        question: "Quais cores estão disponíveis?",
-        answer: ["Preto, verde, bege e marrom. A cor depende da disponibilidade na data."],
       },
       {
         id: "renovacao",
         question: "Dá para renovar o período de aluguel?",
-        answer: ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation."],
+        answer: [
+          "Sim. Se você entender que o pacote de dias escolhido não será suficiente, é possível renovar por mais dias.",
+        ],
       },
       {
         id: "contrato",
         question: "Existe contrato de locação?",
-        answer: ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt."],
+        answer: ["Sim. Existe um termo de locação, com todas as informações sobre a locação contratada."],
       },
     ],
   },
@@ -67,31 +64,27 @@ export const questionGroups: QuestionGroup[] = [
       {
         id: "prazo-de-entrega",
         question: "Em quanto tempo a poltrona chega?",
-        answer: ["Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation."],
+        answer: [
+          "A poltrona é entregue no dia anterior à cirurgia, para que tudo já esteja organizado quando o paciente voltar para casa.",
+        ],
         home: true,
       },
       {
         id: "cidades",
         question: "Quais cidades vocês atendem?",
-        answer: [`${company.serviceArea}, com entrega e retirada em casa.`, company.serviceAreaDetail],
+        answer: [`${company.serviceArea}, com entrega e retirada em casa.`],
         home: true,
       },
       {
         id: "instalacao",
         question: "Quem instala a poltrona?",
-        answer: ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore."],
-      },
-      {
-        id: "o-que-vem-junto",
-        question: "O que vem junto na entrega?",
-        answer: ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."],
+        answer: ["A poltrona é instalada pelo técnico capacitado que a leva até a casa do paciente."],
       },
       {
         id: "retirada",
         question: "Como é a retirada?",
         answer: [
           `Ao final do período combinado, a ${company.name} organiza a retirada do equipamento. Você não precisa se preocupar com o que fazer com a poltrona depois.`,
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.",
         ],
       },
     ],
@@ -105,14 +98,9 @@ export const questionGroups: QuestionGroup[] = [
         question: "Como é feita a higienização?",
         answer: [
           "Antes de cada entrega, a poltrona passa por conferência, higienização, sanitização e preparação.",
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+          "A higienização é feita com produtos de qualidade, que garantem a sanitização total da poltrona e, assim, a segurança de quem aluga.",
         ],
         home: true,
-      },
-      {
-        id: "conferencia",
-        question: "A poltrona é conferida antes da entrega?",
-        answer: ["Sim. Antes de seguir para a entrega, cada equipamento é inspecionado e verificado."],
       },
     ],
   },
@@ -130,7 +118,7 @@ export const questionGroups: QuestionGroup[] = [
       {
         id: "pagamento",
         question: "Quais são as formas de pagamento?",
-        answer: ["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor."],
+        answer: ["Dinheiro, Pix, cartão de crédito e cartão de débito."],
       },
     ],
   },

@@ -1,6 +1,7 @@
 // Dados estruturados (JSON-LD) para buscadores.
 // Empresa que atende no local do cliente: cidade e estado, sem endereço de rua.
-// Horário e faixa de preço ficam de fora até a cliente confirmar (docs/pendencias.md).
+// Atendimento 24 horas, todos os dias (00:00 às 23:59, como o Google pede).
+// Faixa de preço fica de fora até a cliente confirmar (docs/pendencias.md).
 import { company } from "../data/empresa";
 
 const SITE = "https://bruckercare.com.br";
@@ -30,6 +31,12 @@ export function businessSchema() {
       addressCountry: "BR",
     },
     areaServed,
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: "00:00",
+      closes: "23:59",
+    },
     founder: { "@type": "Person", name: company.founder },
     sameAs: [company.instagram.url],
   };

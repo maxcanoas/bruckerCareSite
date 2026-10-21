@@ -1,7 +1,7 @@
 ---
 // A poltrona (posts 3, 7, 8 e 12). Abertura no verde com a foto de estúdio,
 // a narrativa das funções no papel, as cores como amostras de couro, a locação
-// em 6 passos, o processo com a etiqueta, o que vem junto e o fechamento.
+// em 6 passos, o processo com a etiqueta e o fechamento.
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Frame from "../components/Frame.astro";
 import Photo from "../components/Photo.astro";
@@ -11,7 +11,7 @@ import Process from "../components/sections/Process.astro";
 import Closing from "../components/sections/Closing.astro";
 import { company } from "../data/empresa";
 import { rentalSteps } from "../data/locacao";
-import { chairColors, chairPhotos, deliveryItems } from "../data/poltrona";
+import { chairColors, chairPhotos } from "../data/poltrona";
 import { breadcrumbSchema, serviceSchema } from "../lib/schema";
 ---
 
@@ -145,28 +145,6 @@ import { breadcrumbSchema, serviceSchema } from "../lib/schema";
   </section>
 
   <Process tone="linen" />
-
-  <section class="delivery tone-paper sheet" aria-labelledby="delivery-title">
-    <div class="grid delivery__grid">
-      <div class="delivery__head">
-        <span class="label">na entrega</span>
-        <h2 id="delivery-title" class="heading t-h2">O que vem <em>junto</em></h2>
-        <p class="delivery__more">
-          Ficou alguma dúvida? Veja as <a href="/perguntas-frequentes">perguntas frequentes</a>.
-        </p>
-      </div>
-      <ul class="delivery__list">
-        {
-          deliveryItems.map((item) => (
-            <li class="delivery__item">
-              <span class="delivery__check" aria-hidden="true" />
-              {item}
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
 
   <Closing placement="chairClosing" />
 </BaseLayout>
@@ -403,69 +381,6 @@ import { breadcrumbSchema, serviceSchema } from "../lib/schema";
 
     .rental__cta {
       margin-top: 56px;
-    }
-  }
-
-  /* ---------- O que vem junto ---------- */
-
-  .delivery {
-    padding-block: 104px 120px;
-  }
-
-  .delivery__head > * + * {
-    margin-top: 18px;
-  }
-
-  .delivery__head .heading {
-    margin-top: 20px;
-  }
-
-  .delivery__more {
-    color: var(--fg-soft);
-  }
-
-  .delivery__more a {
-    color: var(--heading);
-    font-weight: 500;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 4px;
-  }
-
-  .delivery__list {
-    margin-top: 40px;
-    border-top: 1px solid var(--line);
-  }
-
-  .delivery__item {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding-block: 20px;
-    border-bottom: 1px solid var(--line);
-    font-size: var(--fs-lead);
-  }
-
-  .delivery__check {
-    flex: none;
-    width: 22px;
-    height: 22px;
-    border: 1px solid var(--c-caramel);
-    border-radius: 50%;
-  }
-
-  @media (min-width: 1024px) {
-    .delivery {
-      padding-block: 152px 168px;
-    }
-
-    .delivery__head {
-      grid-column: col 1 / span 5;
-    }
-
-    .delivery__list {
-      grid-column: col 7 / span 6;
-      grid-row: 1;
-      margin-top: 0;
     }
   }
 </style>

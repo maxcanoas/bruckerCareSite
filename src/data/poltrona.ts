@@ -1,4 +1,4 @@
-// A poltrona: fotos com texto alternativo, cores e o que vem junto na entrega.
+// A poltrona: fotos com texto alternativo e cores.
 
 export interface ChairPhoto {
   name: string;
@@ -39,11 +39,4 @@ export const chairColors = [
   { name: "Verde", hex: "#2f4a3e" },
   { name: "Bege", hex: "#d8c7ae" },
   { name: "Marrom", hex: "#4a3124" },
-];
-
-// PENDENTE: o que vem junto na entrega (controle, cabo, capa, orientações de uso?).
-export const deliveryItems = [
-  "Lorem ipsum dolor sit amet",
-  "Lorem ipsum consectetur adipiscing elit",
-  "Lorem ipsum sed do eiusmod tempor",
 ];
