@@ -97,8 +97,9 @@ export const questionGroups: QuestionGroup[] = [
         id: "higienizacao",
         question: "Como é feita a higienização?",
         answer: [
-          "Antes de cada entrega, a poltrona passa por conferência, higienização, sanitização e preparação.",
-          "A higienização é feita com produtos de qualidade, que garantem a sanitização total da poltrona e, assim, a segurança de quem aluga.",
+          "Antes de cada entrega, a poltrona passa por quatro etapas: conferência, higienização, sanitização e preparação.",
+          "Primeiro, conferimos o estado geral da poltrona, como estrutura, regulagens e estofado. Depois, fazemos a limpeza completa de todas as partes que encostam no corpo, como assento, encosto, braços e apoios. Em seguida, aplicamos produtos próprios para sanitização, seguros para o tipo de material da poltrona. Por fim, deixamos tudo seco e protegido para a entrega.",
+          "Assim, quem está em recuperação recebe a poltrona limpa e pronta para usar, sem se preocupar com nada.",
         ],
         home: true,
       },

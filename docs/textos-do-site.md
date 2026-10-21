@@ -174,7 +174,7 @@ Link: Ver todas as perguntas
 - **Preciso de indicação médica para alugar?** As orientações sobre a sua recuperação, incluindo o uso de equipamentos de apoio, vêm sempre da sua equipe médica.
 - **Em quanto tempo a poltrona chega?** A poltrona é entregue no dia anterior à cirurgia, para que tudo já esteja organizado quando o paciente voltar para casa.
 - **Quais cidades vocês atendem?** Canoas, Porto Alegre e região, com entrega e retirada em casa.
-- **Como é feita a higienização?** Antes de cada entrega, a poltrona passa por conferência, higienização, sanitização e preparação. A higienização é feita com produtos de qualidade, que garantem a sanitização total da poltrona e, assim, a segurança de quem aluga.
+- **Como é feita a higienização?** Antes de cada entrega, a poltrona passa por quatro etapas: conferência, higienização, sanitização e preparação. Primeiro, conferimos o estado geral da poltrona, como estrutura, regulagens e estofado. Depois, fazemos a limpeza completa de todas as partes que encostam no corpo, como assento, encosto, braços e apoios. Em seguida, aplicamos produtos próprios para sanitização, seguros para o tipo de material da poltrona. Por fim, deixamos tudo seco e protegido para a entrega. Assim, quem está em recuperação recebe a poltrona limpa e pronta para usar, sem se preocupar com nada.
 
 Não encontrou a sua dúvida? Botão: Perguntar no WhatsApp
 
@@ -300,7 +300,7 @@ Grupos: Locação · Entrega e retirada · Higiene e preparo · Valores e pagame
 - **Como é a retirada?** Ao final do período combinado, a BruckerCare organiza a retirada do equipamento. Você não precisa se preocupar com o que fazer com a poltrona depois.
 
 **Higiene e preparo**
-- **Como é feita a higienização?** Antes de cada entrega, a poltrona passa por conferência, higienização, sanitização e preparação. A higienização é feita com produtos de qualidade, que garantem a sanitização total da poltrona e, assim, a segurança de quem aluga.
+- **Como é feita a higienização?** Antes de cada entrega, a poltrona passa por quatro etapas: conferência, higienização, sanitização e preparação. Primeiro, conferimos o estado geral da poltrona, como estrutura, regulagens e estofado. Depois, fazemos a limpeza completa de todas as partes que encostam no corpo, como assento, encosto, braços e apoios. Em seguida, aplicamos produtos próprios para sanitização, seguros para o tipo de material da poltrona. Por fim, deixamos tudo seco e protegido para a entrega. Assim, quem está em recuperação recebe a poltrona limpa e pronta para usar, sem se preocupar com nada.
 
 **Valores e pagamento**
 - **Quanto custa o aluguel?** O valor depende do período de aluguel. Fale com a BruckerCare pelo WhatsApp para consultar a disponibilidade e o valor para o seu caso.
