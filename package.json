@@ -9,6 +9,7 @@
     "build:preview": "cross-env ALLOW_PLACEHOLDERS=1 astro build",
     "preview": "astro preview",
     "images": "node scripts/prepare-images.mjs",
+    "deploy": "npm run build && npx wrangler deploy",
     "astro": "astro"
   },
   "dependencies": {

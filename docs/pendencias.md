@@ -2,7 +2,7 @@
 
 Lista viva. Tudo o que falta para o site ficar completo e correto. Nada aqui entra no site antes de ser confirmado. Decisões já fechadas estão em `decisoes.md`.
 
-Última atualização: 20/10/2026 (respostas das perguntas frequentes).
+Última atualização: 21/10/2026 (hospedagem no Cloudflare).
 
 ---
 
@@ -26,15 +26,14 @@ Enquanto não houver resposta, o texto do site leva lorem ipsum no lugar, e o bu
 ## Para o Maxwell
 
 - [ ] **Mostrar o redesenho (versão 2) à Pâmela.** Aprovado pelo Maxwell em 19/10/2026 e enviado ao GitHub. A versão 1 só existe em `D:\Freelas\bruckerCareSite-v1` (não entrou no histórico do git); pode ser apagada quando não for mais necessária.
-- [ ] Confirmar se o plano HostGator da Brucker Printers aceita domínio adicional (no Brasil, o Plano P aceita 1 site; M e Turbo aceitam vários).
-- [ ] Registrar `bruckercare.com.br` em nome da BruckerCare (pede CNPJ ou CPF do titular).
-- [ ] Apontar o DNS para o Cloudflare e o MX para a HostGator.
-- [ ] Criar a caixa `contato@bruckercare.com.br` e, se for o caso, o encaminhamento para o e-mail da Pâmela.
+- [ ] **Domínio no Cloudflare.** Na tua conta (a mesma da 9vee e da Braskit), adicionar o site `bruckercare.com.br` no plano Free. No registro.br, trocar os servidores DNS pelos dois que o Cloudflare indicar. Se o DNSSEC estiver ativo no registro.br, desativar antes da troca, senão o domínio pode parar de responder.
+- [ ] **HTTPS e www no Cloudflare**, depois que o domínio ficar ativo: ligar "Always Use HTTPS" (SSL/TLS > Edge Certificates); criar o registro DNS `www` do tipo AAAA com o valor `100::` e proxy ligado (nuvem laranja); criar uma Redirect Rule de `www.bruckercare.com.br` para `https://bruckercare.com.br`, mantendo o caminho, com 301 (há o modelo "Redirect from WWW to root").
 - [ ] ID do GA4 (vai para variável de ambiente).
 - [ ] Cadastro no Search Console e envio do sitemap (Fase 3 da proposta).
 - [ ] Cadastro no Bing Webmaster Tools com o mesmo sitemap (dá para importar do Search Console). A busca do ChatGPT e o Copilot usam o índice do Bing.
 - [ ] **Perfil da Empresa no Google com avaliações de clientes.** É o que mais pesa na busca local e nas respostas do Gemini e do Google. Prioridade número 1 fora do código depois da publicação.
-- [ ] **Publicação na HostGator:** subir o conteúdo de `dist/` (o build de produção) inteiro, inclusive o `.htaccess` (arquivo oculto), que serve `/quem-somos` a partir de `quem-somos.html`, força HTTPS sem www e define o cache. No Cloudflare, usar SSL "Full" (com "Flexible" o redirecionamento entra em laço).
+- [ ] **Publicação no Cloudflare:** `npm run deploy` gera o build de produção e manda o `dist/` para o Worker `bruckercare`. Na primeira vez, `npx wrangler login`, marcando a conta certa (na 9vee, o login chegou a enxergar só a conta "Freguês"). O deploy liga o domínio sozinho (o `routes` do `wrangler.jsonc`), mas só funciona com o domínio já ativo no Cloudflare. Enquanto houver lorem na política de privacidade, o build de produção falha e nada sobe.
+- [ ] **Conferir no ar:** a home e as páginas em 200; `http://`, `www.` e `/quem-somos.html` redirecionando para o endereço limpo, com HTTPS e sem www; endereço inexistente em 404, com a página do site; o cabeçalho `Cache-Control` de um arquivo de `/_astro/` com `immutable`.
 - [ ] **GA4:** colocar o ID em `.env` (`PUBLIC_GA4_ID=G-...`, modelo em `.env.example`) e gerar o build. No GA4: registrar as dimensões personalizadas `botao`, `pagina` e `formulario` (escopo de evento), marcar `clique_whatsapp`, `envio_formulario` e `clique_telefone` como eventos principais e definir a retenção de dados (o mesmo prazo vai para a política).
 - [ ] **Testar num iPhone de verdade (Safari iOS).** A versão 2 foi testada no motor WebKit (perfil iPhone 13), no Chrome e no Firefox; o WebKit para Windows não substitui o aparelho. Conferir principalmente a etiqueta que balança, as três seções fixas e o vidro do cabeçalho.
 

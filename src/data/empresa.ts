@@ -10,7 +10,7 @@ export const company = {
 
   whatsapp: { number: "5551998631666", display: "(51) 99863-1666" },
   phone: { href: "tel:+5551998631666", display: "(51) 99863-1666" },
-  email: "contato@bruckercare.com.br",
+  email: "bruckercare@gmail.com",
   instagram: { handle: "@bruckercare", url: "https://www.instagram.com/bruckercare/" },
 
   city: "Canoas",

@@ -1,0 +1,18 @@
+{
+  // Site no Cloudflare: um Worker que só serve os arquivos do dist/, sem código no servidor.
+  // A Cloudflare recomenda Workers no lugar do Pages para projeto novo.
+  // Publicar: npm run deploy (build de produção + wrangler deploy).
+  "name": "bruckercare",
+  "compatibility_date": "2026-10-21",
+  "assets": {
+    "directory": "./dist",
+    // Endereço que não existe recebe a 404.html do site, com status 404.
+    // O html_handling padrão serve /quem-somos a partir de quem-somos.html e
+    // redireciona /quem-somos.html, /quem-somos/ e /index para o endereço limpo.
+    "not_found_handling": "404-page"
+  },
+  // Só o domínio definitivo: sem o endereço *.workers.dev, que duplicaria o site.
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [{ "pattern": "bruckercare.com.br", "custom_domain": true }]
+}

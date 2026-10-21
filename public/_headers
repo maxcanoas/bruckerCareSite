@@ -1,0 +1,10 @@
+# Cabeçalhos do site no Cloudflare.
+# Arquivos com hash no nome (pasta _astro) ficam 1 ano em cache; o resto o Cloudflare
+# já entrega com "max-age=0, must-revalidate", conferido a cada visita.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()

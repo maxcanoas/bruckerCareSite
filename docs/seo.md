@@ -26,9 +26,9 @@ O maior ganho que ainda falta depende da cliente: citar pelo nome as cirurgias p
 
 | Item | Situação |
 |---|---|
-| HTTPS e domínio sem www | `.htaccess` redireciona (301). |
-| Endereços limpos | `/a-poltrona`, sem `.html` e sem barra no fim; `.html` e barra final redirecionam (301). |
-| Endereço oficial (canonical) | Em todas as páginas. **Corrigido na home:** era `/index`, agora é `/`. O `.htaccess` também redireciona `/index` para `/`. |
+| HTTPS e domínio sem www | No Cloudflare: "Always Use HTTPS" e uma Redirect Rule de `www` para o endereço sem www (301). |
+| Endereços limpos | `/a-poltrona`, sem `.html` e sem barra no fim; `.html` e barra final redirecionam (307, o padrão do Cloudflare; nenhum link aponta para essas formas, e o canonical indica a certa). |
+| Endereço oficial (canonical) | Em todas as páginas. **Corrigido na home:** era `/index`, agora é `/`. O Cloudflare também redireciona `/index` para `/`. |
 | Sitemap | `sitemap-index.xml` com as 6 páginas indexáveis (a 404 fica de fora). Sem `lastmod`, o que é opcional. |
 | robots.txt | Libera tudo e aponta o sitemap. Libera também os robôs de IA (GPTBot, ClaudeBot, PerplexityBot, Google-Extended). |
 | Página 404 | `noindex`. |

@@ -29,7 +29,7 @@ Todo o texto do site, por página e seção, para revisar com a cliente. Trechos
 **Rodapé**
 - Cuidado que começa antes mesmo da recuperação.
 - navegação: Início, A poltrona, Quem somos, Perguntas frequentes, Contato
-- contato: WhatsApp (51) 99863-1666 · Telefone (51) 99863-1666 · contato@bruckercare.com.br · Instagram @bruckercare
+- contato: WhatsApp (51) 99863-1666 · Telefone (51) 99863-1666 · bruckercare@gmail.com · Instagram @bruckercare
 - atendimento: Entrega e retirada em casa em Canoas, Porto Alegre e região. / Atendimento 24 horas.
 - Política de privacidade · Preferências de cookies · © 2026 BruckerCare · Desenvolvido por DEVMRMORAES (link para https://devmrmoraes.com.br, abre em nova aba)
 
@@ -314,7 +314,7 @@ Tire as suas dúvidas e consulte a disponibilidade da poltrona. O atendimento é
 Botão: Chamar no WhatsApp
 
 - Telefone: (51) 99863-1666
-- E-mail: contato@bruckercare.com.br
+- E-mail: bruckercare@gmail.com
 - Instagram: @bruckercare
 - Área de atendimento: Canoas, Porto Alegre e região, com entrega e retirada em casa.
 - Horário: Atendimento 24 horas.

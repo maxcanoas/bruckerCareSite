@@ -59,6 +59,8 @@ jobs:
           JS
           node /tmp/fix.cjs
           printf 'User-agent: *\nDisallow: /\n' > dist/robots.txt
+          # O _headers só vale no Cloudflare; aqui seria servido como arquivo comum.
+          rm -f dist/_headers
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

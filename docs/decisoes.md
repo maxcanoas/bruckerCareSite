@@ -25,9 +25,11 @@ Decisões fechadas com o Maxwell no grilling de 18/10/2026. O que ainda depende 
 | Tema | Decisão |
 |---|---|
 | Domínio | `bruckercare.com.br` (livre em 18/10/2026), em nome da BruckerCare. |
-| Hospedagem | HostGator, no mesmo plano da Brucker Printers. |
-| DNS e CDN | Cloudflare (plano gratuito), como a Brucker Printers. MX do e-mail apontando para a HostGator. |
-| E-mail | `contato@bruckercare.com.br`, caixa nova na HostGator. Só é exibido no site. |
+| Domínio comprado | Informado pelo Maxwell em 21/10/2026. |
+| Hospedagem | Cloudflare, plano gratuito, como Worker que só serve os arquivos estáticos (`wrangler.jsonc`), na conta do Maxwell, junto da 9vee e da Braskit. Decisão de 21/10/2026: a cliente preferiu não pagar hospedagem agora, e a HostGator saiu do plano. GitHub Pages ficou de fora porque os termos não são feitos para site de empresa, e a Vercel porque o plano grátis proíbe uso comercial. Publicação com `npm run deploy`, como na 9vee. O endereço `*.workers.dev` fica desligado, para não duplicar o site. |
+| DNS e CDN | Cloudflare, na mesma conta. O endereço oficial é `bruckercare.com.br`, sem www; o `www` redireciona com 301 por uma Redirect Rule do Cloudflare. |
+| Cabeçalhos e endereços | `public/_headers` faz o que o `.htaccess` fazia: cache de 1 ano em `/_astro/`, `nosniff`, `Referrer-Policy` e `Permissions-Policy`. O próprio Cloudflare serve `/quem-somos` a partir de `quem-somos.html`, redireciona `.html`, barra no fim e `/index` (com 307, o padrão dele), devolve a `404.html` com status 404 e comprime. O `.htaccess` saiu do projeto e fica no histórico do git. Conferido localmente com `wrangler dev` em 21/10/2026. |
+| E-mail | `bruckercare@gmail.com`, no rodapé, no contato, na política de privacidade e nos dados estruturados. Por enquanto a BruckerCare não terá e-mail com o domínio (Maxwell, 21/10/2026); o `contato@bruckercare.com.br` previsto saiu junto com a HostGator. |
 | Formulário | Não envia nada ao servidor. Monta a mensagem e abre o WhatsApp da BruckerCare (`wa.me/5551998631666`). Botão: "Enviar pelo WhatsApp". Evento GA4 `envio_formulario` no clique. Sem PHP, sem anti-spam. |
 | Campos do formulário | Nome, cidade, data em que precisa da poltrona, mensagem. Sem telefone (o número chega pelo próprio WhatsApp). Sem data da cirurgia (dado de saúde, sensível pela LGPD). Dica no campo de mensagem: não é preciso contar detalhes do procedimento. |
 | Fonte | Inter (a mesma das artes do feed; o logo é desenhado sobre a Inter Tight). Licença OFL. Variável em woff2 (eixo de peso, 48 KB), hospedada no site e pré-carregada. A versão com eixo óptico (73 KB) foi trocada para dar folga ao LCP (decisão do Maxwell, 18/10/2026). |
@@ -70,7 +72,7 @@ Análise de busca (Google) e de respostas de IA (ChatGPT, Gemini, Perplexity). A
 
 | Tema | Decisão |
 |---|---|
-| Endereço oficial da home | O canonical e o `og:url` da home apontavam para `/index`. Corrigido para `/` no `BaseLayout`; o `.htaccess` redireciona `/index` para `/`. |
+| Endereço oficial da home | O canonical e o `og:url` da home apontavam para `/index`. Corrigido para `/` no `BaseLayout`; o Cloudflare redireciona `/index` para `/`. |
 | Palavras-chave | Principal: "aluguel de poltrona pós-operatório" + Canoas e Porto Alegre. Variações que os concorrentes usam e o site não tinha: "poltrona reclinável" (agora em títulos, descrições, H1 de A poltrona e textos), "pós-cirúrgico", "locação". Sem repetir à força: cada termo entra onde a frase continua natural. |
 | H1 da home | O rótulo "aluguel de poltronas para o pós-operatório" virou o H1; a frase grande "Cuidar também é preparar o caminho da recuperação." virou parágrafo. Nada muda no visual. |
 | Títulos | Até cerca de 60 caracteres. A home ficou sem "\| BruckerCare" (o nome do site vem do dado estruturado `WebSite`). |
