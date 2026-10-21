@@ -8,10 +8,8 @@ const sources = import.meta.glob<{ default: ImageMetadata }>(
   { eager: true },
 );
 
-// Arquivos que não entram no site: versões intermediárias e fotos reprovadas.
-// cores-poltronas: mostra cores erradas (docs/pendencias.md). Ao salvar a versão
-// nova com o mesmo nome, tire o nome desta lista.
-const IGNORED = new Set(["poltrona-recorte-original", "og-image-base", "cores-poltronas"]);
+// Arquivos que não entram no site: versões intermediárias.
+const IGNORED = new Set(["poltrona-recorte-original", "og-image-base"]);
 
 const byName = new Map<string, ImageMetadata>();
 for (const [file, module] of Object.entries(sources)) {

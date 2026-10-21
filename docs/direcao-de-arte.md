@@ -102,7 +102,7 @@ Os números "01" só aparecem onde a ordem importa: os 6 passos do aluguel e as 
 
 | Página | Composição |
 |---|---|
-| A poltrona | Abertura no verde com a foto de estúdio; a narrativa fixa no papel com 4 fotos (quarto, reclinada, controle, botões do braço); cores como amostras de couro com pesponto; os 6 passos em cartões; o processo com a etiqueta (no linho); fechamento. |
+| A poltrona | Abertura no verde com a foto de estúdio; a narrativa fixa no papel com 4 fotos (quarto, reclinada, controle, botões do braço); os 6 passos em cartões (no linho); o processo com a etiqueta (no papel); fechamento. |
 | Quem somos | Abertura só de texto grande, com o ícone de marca d'água; a história com a foto da Pâmela presa ao lado; "Conforto. Praticidade. Ambiente. Acolhimento." com os anéis; "Como trabalhamos" no linho; fechamento. |
 | Perguntas frequentes | Título e índice em pílulas presos à esquerda; grupos em sanfona; caixa verde "Não encontrou a sua dúvida?". |
 | Contato | Contatos diretos à esquerda e o formulário (que abre o WhatsApp) num painel de linho. |
@@ -155,6 +155,6 @@ Nas páginas que terminam no claro, o rodapé começa com os mesmos cantos macio
 | Pâmela | `pamela-zweibrucker-recorte` | 4:5 |
 | Em casa | `preparo-mesa-lateral` | 4:5 |
 | Fechamento | `poltrona-estudio-verde` (bordas esfumadas) | livre |
-| A poltrona (página) | as de cima e `detalhe-botoes-braco`, `cores-poltronas` (bloqueada) | 4:5 e 16:9 |
+| A poltrona (página) | as de cima e `detalhe-botoes-braco` | 4:5 |
 
-Deixaram de ser usadas: `hero-sala-poltrona-desktop` (o hero usa a foto vertical nas duas larguras) e `detalhe-couro-costura` (as faixas de couro saíram). Todas as fotos saem em AVIF e WebP com `srcset`; o hero com carga prioritária e o resto com carga tardia.
+Deixaram de ser usadas: `hero-sala-poltrona-desktop` (o hero usa a foto vertical nas duas larguras), `detalhe-couro-costura` (as faixas de couro saíram) e `cores-poltronas` (a seção de cores saiu da página A poltrona). Todas as fotos saem em AVIF e WebP com `srcset`; o hero com carga prioritária e o resto com carga tardia.

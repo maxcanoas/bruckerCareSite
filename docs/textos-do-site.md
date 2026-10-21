@@ -256,20 +256,11 @@ Cuidado, conforto e autonomia para você.
 
 Indicador abaixo da foto: em casa · reclinação · controle · botões
 
-### Cores
-*cores*
-
-**Cores disponíveis**
-
-A poltrona é a mesma nas quatro cores. A cor depende da disponibilidade na data.
-
-Amostras: Preto · Verde · Bege · Marrom. Foto das quatro: aguardando a versão com as cores certas.
-
 ### Como funciona o aluguel
-Os mesmos 6 passos da página inicial, em lista. Botão: Consultar disponibilidade
+Os mesmos 6 passos da página inicial, em lista, no linho. Botão: Consultar disponibilidade
 
 ### O processo
-Igual ao da página inicial, com a etiqueta "higienizada e pronta para você".
+Igual ao da página inicial (no papel), com a etiqueta "higienizada e pronta para você".
 
 ### Fechamento
 Igual ao da página inicial.
@@ -373,4 +364,3 @@ Link: Voltar para o início · Botão: Chamar no WhatsApp
 | Pâmela | Pâmela Zweibrucker, fundadora da BruckerCare, sentada numa poltrona de couro caramelo, de blusa preta e óculos, sorrindo para a câmera. |
 | Mesa lateral | Mesa lateral redonda de madeira ao lado de uma poltrona marrom, com jarra e copo de água, celular, carregador, controle remoto, um livro e óculos. |
 | Botões do braço | Detalhe do braço de uma poltrona de couro caramelo, com o painel de dois botões de ajuste na lateral e o porta-copos embutido no topo. |
-| Cores (quando vier a foto certa) | As quatro cores da poltrona lado a lado: preto, verde, bege e marrom. |

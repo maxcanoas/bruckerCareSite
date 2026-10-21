@@ -10,7 +10,7 @@ Decisões fechadas com o Maxwell no grilling de 18/10/2026. O que ainda depende 
 | Título do hero | "Cuidar também é preparar o caminho da recuperação." (post 1). Subtítulo: o que é, para quem e onde. "A poltrona é o equipamento. O cuidado é o nosso trabalho." (post 16) vai para a seção do processo de preparo. |
 | Preço | Não aparece no site. Botões levam ao WhatsApp ("Consultar disponibilidade"). O FAQ explica que o valor depende do período. |
 | Cirurgias | Texto principal fala de recuperação pós-operatória em geral. Uma pergunta do FAQ e as meta descriptions citam "cirurgias em geral, inclusive plásticas". |
-| Poltronas | O site mostra só as cores, sem quantidade, com a nota "a cor depende da disponibilidade na data". Cores informadas: preto, verde, bege e marrom. O tom exato do "marrom" depende da foto real das 4 poltronas. |
+| Poltronas | O site não mostra cores nem quantidade. Cores informadas pela cliente: preto, verde, bege e marrom. Em 20/10/2026 a pergunta das cores saiu do FAQ (pedido da cliente) e a seção "Cores disponíveis" saiu da página A poltrona (pedido do Maxwell); com isso, o aluguel passou para o linho e o processo para o papel, para manter a alternância de tons. |
 | Endereço | Só área de atendimento. Sem endereço nem mapa. Perfil da Empresa no Google como empresa que atende no local do cliente. JSON-LD com cidade, estado e área atendida. |
 | Quem somos | Só a Pâmela (a proposta fala em "proprietários", no plural; decisão do Maxwell). |
 | Foto da Pâmela | `pamela-zweibrucker.jpg` é foto real (confirmado pelo Maxwell). Usar com recorte, sem o logo aplicado. |

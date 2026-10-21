@@ -1,4 +1,4 @@
-// A poltrona: fotos com texto alternativo e cores.
+// A poltrona: fotos com texto alternativo.
 
 export interface ChairPhoto {
   name: string;
@@ -31,12 +31,3 @@ export const chairPhotos = {
     alt: "Detalhe do braço de uma poltrona de couro caramelo, com o painel de dois botões de ajuste na lateral e o porta-copos embutido no topo.",
   },
 } satisfies Record<string, ChairPhoto>;
-
-// Cores informadas pela cliente. A amostra é um tom aproximado.
-// PENDENTE: conferir os quatro tons pela foto real das poltronas (docs/pendencias.md).
-export const chairColors = [
-  { name: "Preto", hex: "#1d1b1a" },
-  { name: "Verde", hex: "#2f4a3e" },
-  { name: "Bege", hex: "#d8c7ae" },
-  { name: "Marrom", hex: "#4a3124" },
-];
