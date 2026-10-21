@@ -333,7 +333,7 @@ Nada fica guardado no site. A mensagem vai direto para o WhatsApp da BruckerCare
 
 ## Política de privacidade
 
-O texto completo está na própria página (`src/pages/politica-de-privacidade.astro`), em 9 partes: quem cuida dos dados, quais dados, para que usamos, cookies, compartilhamento, prazo de guarda, direitos, contato e mudanças. Em lorem ipsum: razão social, CNPJ, encarregado e prazo de guarda. Recomendo revisão jurídica antes de publicar.
+O texto completo está na própria página (`src/pages/politica-de-privacidade.astro`), em 9 partes: quem cuida dos dados, quais dados, para que usamos, cookies, compartilhamento, prazo de guarda, direitos, contato e mudanças. Sem lorem desde 21/10/2026. Sem CNPJ e sem razão social, que estão em aprovação. Encarregada: Pâmela Zweibrucker, pelo e-mail bruckercare@gmail.com. Prazo de guarda: conversas e dados da locação até 5 anos depois do fim da locação (prazo do Código de Defesa do Consumidor para reclamações), Google Analytics por 14 meses. Recomendo revisão jurídica antes de publicar.
 
 ---
 

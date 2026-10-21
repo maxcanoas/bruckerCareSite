@@ -1,12 +1,13 @@
 ---
 // Política de privacidade (LGPD). Coluna única de leitura, com índice no topo.
-// Razão social, CNPJ, encarregado e prazos de guarda esperam dados da cliente.
+// O CNPJ está em aprovação: a página vai ao ar sem CNPJ e sem razão social (decisão de 21/10/2026).
+// A Pâmela é a encarregada. Os 14 meses do Google Analytics têm de bater com a retenção configurada no GA4.
 // Recomendado: revisão jurídica antes de publicar (docs/pendencias.md).
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { company } from "../data/empresa";
 import { breadcrumbSchema } from "../lib/schema";
 
-const updated = "18 de outubro de 2026";
+const updated = "21 de outubro de 2026";
 
 const sections = [
   { id: "quem-trata", title: "Quem cuida dos seus dados" },
@@ -50,10 +51,13 @@ const sections = [
         <section id="quem-trata" aria-labelledby="quem-trata-t">
           <h2 id="quem-trata-t">1. Quem cuida dos seus dados</h2>
           <p>
-            A {company.name} ({company.legalName}, {company.taxId}), de {company.city}, {company.state}, é a responsável
-            (controladora) pelos dados pessoais tratados neste site e no atendimento.
+            A {company.name}, de {company.city}, {company.state}, é a responsável (controladora) pelos dados pessoais
+            tratados neste site e no atendimento.
           </p>
-          <p>Encarregado pelo tratamento de dados: lorem ipsum dolor sit amet, contato lorem ipsum.</p>
+          <p>
+            Encarregada pelo tratamento de dados: {company.founder}, pelo e-mail
+            <a class="link" href={`mailto:${company.email}`}>{company.email}</a>.
+          </p>
         </section>
 
         <section id="dados" aria-labelledby="dados-t">
@@ -142,8 +146,9 @@ const sections = [
         <section id="guarda" aria-labelledby="guarda-t">
           <h2 id="guarda-t">6. Por quanto tempo guardamos</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua.
+            Guardamos as conversas e os dados da locação (nome, endereço de entrega e período) enquanto durar o
+            atendimento e por até 5 anos depois do fim da locação, o prazo que o Código de Defesa do Consumidor dá para
+            reclamações sobre o serviço. Os dados do Google Analytics ficam guardados por 14 meses.
           </p>
           <p>Depois desse prazo, os dados são apagados, a menos que a lei obrigue a guardá-los por mais tempo.</p>
         </section>

@@ -18,7 +18,5 @@ export const company = {
   serviceArea: "Canoas, Porto Alegre e região",
 
   hours: "Atendimento 24 horas.",
-  // PENDENTE: razão social e CNPJ (só na política de privacidade; o rodapé não mostra).
-  legalName: "Lorem ipsum dolor sit amet",
-  taxId: "CNPJ lorem ipsum",
+  // Sem razão social e CNPJ: o CNPJ está em aprovação, e o site vai ao ar sem ele (21/10/2026).
 } as const;

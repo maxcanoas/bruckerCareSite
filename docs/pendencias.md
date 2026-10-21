@@ -10,15 +10,13 @@ Lista viva. Tudo o que falta para o site ficar completo e correto. Nada aqui ent
 
 Enquanto não houver resposta, o texto do site leva lorem ipsum no lugar, e o build de produção não publica.
 
-- [ ] Razão social e CNPJ da BruckerCare (política de privacidade e registro do domínio).
-- [ ] Nome e contato do responsável pelos dados pessoais (encarregado, LGPD).
+- [ ] **CNPJ em aprovação** (informado em 21/10/2026). O site vai ao ar sem ele. Quando sair, decidir se a razão social e o CNPJ entram na política de privacidade.
 - [ ] Link do Perfil da Empresa no Google (para os dados estruturados e para ligar ao site).
 - [ ] **Para quais cirurgias as clientes mais alugam** (lipoaspiração, abdominoplastia, mamoplastia, ortopédicas?). Citar os procedimentos pelo nome é o maior ganho de palavras-chave que falta; hoje o site diz só "cirurgias em geral, inclusive plásticas".
 - [ ] **A poltrona ajuda a levantar** (função "lift", "poltrona elevatória")? Se sim, é outro termo forte de busca. O site hoje não afirma isso.
 - [ ] Se aceita listar no site as cidades atendidas na região (ajuda na busca local).
 - [ ] Colocar o link do site na bio do Instagram.
 - [ ] **Confirmar dois detalhes da poltrona citados na página A poltrona:** o painel com dois botões na lateral do braço e o controle com fio. Eles vêm da descrição da poltrona real usada nos prompts das imagens, mas a cliente ainda não confirmou.
-- [ ] Prazo de guarda dos dados (conversas e cadastro) para a política de privacidade.
 - [ ] **Revisão jurídica da política de privacidade** (recomendado antes de publicar). O texto segue a LGPD, mas não substitui um advogado.
 - [ ] **Foto real das 4 poltronas** (preto, verde, bege, marrom), mesmo de celular, para servir de referência ao regerar as imagens.
 - [ ] Foto da Pâmela em resolução maior, se houver o arquivo original (o recorte atual só com ela tem cerca de 560x700 px).
@@ -31,9 +29,9 @@ Enquanto não houver resposta, o texto do site leva lorem ipsum no lugar, e o bu
 - [ ] Cadastro no Search Console e envio do sitemap (Fase 3 da proposta).
 - [ ] Cadastro no Bing Webmaster Tools com o mesmo sitemap (dá para importar do Search Console). A busca do ChatGPT e o Copilot usam o índice do Bing.
 - [ ] **Perfil da Empresa no Google com avaliações de clientes.** É o que mais pesa na busca local e nas respostas do Gemini e do Google. Prioridade número 1 fora do código depois da publicação.
-- [ ] **Publicação no Cloudflare:** `npm run deploy` gera o build de produção e manda o `dist/` para o Worker `bruckercare`. Na primeira vez, `npx wrangler login`, marcando a conta "BruckerCare" (na 9vee, o login chegou a enxergar só a conta "Freguês"; aqui o `account_id` no `wrangler.jsonc` evita publicar na conta errada). O deploy liga o domínio sozinho (o `routes` do `wrangler.jsonc`), mas só funciona com o domínio já ativo no Cloudflare. Enquanto houver lorem na política de privacidade, o build de produção falha e nada sobe.
+- [ ] **Publicação no Cloudflare:** `npm run deploy` gera o build de produção e manda o `dist/` para o Worker `bruckercare`. Na primeira vez, `npx wrangler login`, marcando a conta "BruckerCare" (na 9vee, o login chegou a enxergar só a conta "Freguês"; aqui o `account_id` no `wrangler.jsonc` evita publicar na conta errada). O deploy liga o domínio sozinho (o `routes` do `wrangler.jsonc`), mas só funciona com o domínio já ativo no Cloudflare. O site não tem mais lorem (21/10/2026), então o build de produção passa.
 - [ ] **Conferir no ar:** a home e as páginas em 200; `http://`, `www.` e `/quem-somos.html` redirecionando para o endereço limpo, com HTTPS e sem www; endereço inexistente em 404, com a página do site; o cabeçalho `Cache-Control` de um arquivo de `/_astro/` com `immutable`.
-- [ ] **GA4:** colocar o ID em `.env` (`PUBLIC_GA4_ID=G-...`, modelo em `.env.example`) e gerar o build. No GA4: registrar as dimensões personalizadas `botao`, `pagina` e `formulario` (escopo de evento), marcar `clique_whatsapp`, `envio_formulario` e `clique_telefone` como eventos principais e definir a retenção de dados (o mesmo prazo vai para a política).
+- [ ] **GA4:** colocar o ID em `.env` (`PUBLIC_GA4_ID=G-...`, modelo em `.env.example`) e gerar o build. No GA4: registrar as dimensões personalizadas `botao`, `pagina` e `formulario` (escopo de evento), marcar `clique_whatsapp`, `envio_formulario` e `clique_telefone` como eventos principais e definir a retenção de dados em **14 meses**, o prazo que a política de privacidade promete.
 - [ ] **Testar num iPhone de verdade (Safari iOS).** A versão 2 foi testada no motor WebKit (perfil iPhone 13), no Chrome e no Firefox; o WebKit para Windows não substitui o aparelho. Conferir principalmente a etiqueta que balança, as três seções fixas e o vidro do cabeçalho.
 
 ## Material da marca
