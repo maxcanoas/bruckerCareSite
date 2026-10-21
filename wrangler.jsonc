@@ -3,6 +3,9 @@
   // A Cloudflare recomenda Workers no lugar do Pages para projeto novo.
   // Publicar: npm run deploy (build de produção + wrangler deploy).
   "name": "bruckercare",
+  // Conta "BruckerCare" no Cloudflare. O login do Maxwell enxerga várias contas; sem isto,
+  // o deploy pode cair na conta errada.
+  "account_id": "d189e07ecf15abc2016e784c33fc1d51",
   "compatibility_date": "2026-10-21",
   "assets": {
     "directory": "./dist",
