@@ -13,6 +13,10 @@ Enquanto não houver resposta, o texto do site leva lorem ipsum no lugar, e o bu
 - [ ] Razão social e CNPJ da BruckerCare (política de privacidade e registro do domínio).
 - [ ] Nome e contato do responsável pelos dados pessoais (encarregado, LGPD).
 - [ ] Link do Perfil da Empresa no Google (para os dados estruturados e para ligar ao site).
+- [ ] **Para quais cirurgias as clientes mais alugam** (lipoaspiração, abdominoplastia, mamoplastia, ortopédicas?). Citar os procedimentos pelo nome é o maior ganho de palavras-chave que falta; hoje o site diz só "cirurgias em geral, inclusive plásticas".
+- [ ] **A poltrona ajuda a levantar** (função "lift", "poltrona elevatória")? Se sim, é outro termo forte de busca. O site hoje não afirma isso.
+- [ ] Se aceita listar no site as cidades atendidas na região (ajuda na busca local).
+- [ ] Colocar o link do site na bio do Instagram.
 - [ ] **Confirmar dois detalhes da poltrona citados na página A poltrona:** o painel com dois botões na lateral do braço e o controle com fio. Eles vêm da descrição da poltrona real usada nos prompts das imagens, mas a cliente ainda não confirmou.
 - [ ] Prazo de guarda dos dados (conversas e cadastro) para a política de privacidade.
 - [ ] **Revisão jurídica da política de privacidade** (recomendado antes de publicar). O texto segue a LGPD, mas não substitui um advogado.
@@ -28,10 +32,11 @@ Enquanto não houver resposta, o texto do site leva lorem ipsum no lugar, e o bu
 - [ ] Criar a caixa `contato@bruckercare.com.br` e, se for o caso, o encaminhamento para o e-mail da Pâmela.
 - [ ] ID do GA4 (vai para variável de ambiente).
 - [ ] Cadastro no Search Console e envio do sitemap (Fase 3 da proposta).
+- [ ] Cadastro no Bing Webmaster Tools com o mesmo sitemap (dá para importar do Search Console). A busca do ChatGPT e o Copilot usam o índice do Bing.
+- [ ] **Perfil da Empresa no Google com avaliações de clientes.** É o que mais pesa na busca local e nas respostas do Gemini e do Google. Prioridade número 1 fora do código depois da publicação.
 - [ ] **Publicação na HostGator:** subir o conteúdo de `dist/` (o build de produção) inteiro, inclusive o `.htaccess` (arquivo oculto), que serve `/quem-somos` a partir de `quem-somos.html`, força HTTPS sem www e define o cache. No Cloudflare, usar SSL "Full" (com "Flexible" o redirecionamento entra em laço).
 - [ ] **GA4:** colocar o ID em `.env` (`PUBLIC_GA4_ID=G-...`, modelo em `.env.example`) e gerar o build. No GA4: registrar as dimensões personalizadas `botao`, `pagina` e `formulario` (escopo de evento), marcar `clique_whatsapp`, `envio_formulario` e `clique_telefone` como eventos principais e definir a retenção de dados (o mesmo prazo vai para a política).
 - [ ] **Testar num iPhone de verdade (Safari iOS).** A versão 2 foi testada no motor WebKit (perfil iPhone 13), no Chrome e no Firefox; o WebKit para Windows não substitui o aparelho. Conferir principalmente a etiqueta que balança, as três seções fixas e o vidro do cabeçalho.
-- [ ] Com as respostas reais do FAQ, avaliar incluir os dados estruturados `FAQPage`.
 
 ## Material da marca
 

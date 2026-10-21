@@ -7,7 +7,7 @@ import Frame from "../components/Frame.astro";
 import Closing from "../components/sections/Closing.astro";
 import LogoIcon from "../assets/brand/logo-icon.svg";
 import { company } from "../data/empresa";
-import { breadcrumbSchema } from "../lib/schema";
+import { breadcrumbSchema, founderSchema } from "../lib/schema";
 
 const values = ["Conforto.", "Praticidade.", "Ambiente.", "Acolhimento."];
 
@@ -28,9 +28,9 @@ const principles = [
 ---
 
 <BaseLayout
-  schema={[breadcrumbSchema("Quem somos", "/quem-somos")]}
+  schema={[breadcrumbSchema("Quem somos", "/quem-somos"), founderSchema()]}
   title="Quem somos | BruckerCare, poltronas para pós-operatório"
-  description="A BruckerCare nasceu da experiência de recuperação da fundadora, Pâmela Zweibrucker. Aluguel de poltronas elétricas para o pós-operatório em Canoas e região."
+  description="A BruckerCare nasceu da experiência de recuperação da fundadora, Pâmela Zweibrucker. Aluguel de poltronas reclináveis para o pós-operatório em Canoas e região."
 >
   <section class="about-intro tone-paper" aria-labelledby="about-title">
     <LogoIcon class="about-intro__mark" aria-hidden="true" focusable="false" />

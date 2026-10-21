@@ -11,14 +11,14 @@ import HomeTips from "../components/home/HomeTips.astro";
 import HomeFaq from "../components/home/HomeFaq.astro";
 import Closing from "../components/sections/Closing.astro";
 import { chairPhotos } from "../data/poltrona";
-import { serviceSchema } from "../lib/schema";
+import { serviceSchema, websiteSchema } from "../lib/schema";
 ---
 
 <BaseLayout
   home
-  schema={[serviceSchema()]}
-  title="Aluguel de poltrona pós-operatório em Canoas e Porto Alegre | BruckerCare"
-  description="Aluguel de poltrona elétrica para a recuperação de cirurgias em geral, inclusive plásticas. Entrega e retirada em casa em Canoas, Porto Alegre e região."
+  schema={[websiteSchema(), serviceSchema()]}
+  title="Aluguel de poltrona pós-operatório em Canoas e Porto Alegre"
+  description="Aluguel de poltrona reclinável elétrica para o pós-operatório de cirurgias em geral, inclusive plásticas. Entrega e retirada em Canoas, Porto Alegre e região."
 >
   <Hero />
   <Recovery />
@@ -31,7 +31,7 @@ import { serviceSchema } from "../lib/schema";
         photo: chairPhotos.studio,
         short: "a poltrona",
         title: "O que é uma poltrona de recuperação?",
-        text: "É uma poltrona elétrica pensada para cuidar de você em cada momento do dia, com reclinação eletrônica e apoio para as pernas. Ela ajusta a posição de forma simples e confortável e deixa os momentos de descanso mais agradáveis.",
+        text: "É uma poltrona reclinável elétrica, pensada para cuidar de você em cada momento do pós-cirúrgico. Com apoio para as pernas, ela ajusta a posição de forma simples e confortável e deixa os momentos de descanso mais agradáveis.",
       },
       {
         photo: chairPhotos.reclined,

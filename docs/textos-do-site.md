@@ -2,7 +2,7 @@
 
 Todo o texto do site, por página e seção, para revisar com a cliente. Trechos em *lorem ipsum* esperam resposta da cliente (lista em `pendencias.md`).
 
-Última atualização: 19/10/2026. Todas as páginas, com os ajustes de texto do redesenho (versão 2).
+Última atualização: 20/10/2026. Respostas das perguntas frequentes e ajustes de SEO (títulos, descrições e H1).
 
 ---
 
@@ -12,10 +12,10 @@ Todo o texto do site, por página e seção, para revisar com a cliente. Trechos
 
 | Página | Title | Description |
 |---|---|---|
-| Início | Aluguel de poltrona pós-operatório em Canoas e Porto Alegre \| BruckerCare | Aluguel de poltrona elétrica para a recuperação de cirurgias em geral, inclusive plásticas. Entrega e retirada em casa em Canoas, Porto Alegre e região. |
-| Quem somos | Quem somos \| BruckerCare, poltronas para pós-operatório | A BruckerCare nasceu da experiência de recuperação da fundadora, Pâmela Zweibrucker. Aluguel de poltronas elétricas para o pós-operatório em Canoas e região. |
-| A poltrona | Poltrona elétrica para recuperação pós-operatória \| BruckerCare | Poltrona elétrica com reclinação e apoio para as pernas, para a recuperação de cirurgias, inclusive plásticas. Aluguel com entrega e retirada em Canoas e região. |
-| Perguntas frequentes | Perguntas frequentes sobre o aluguel de poltrona \| BruckerCare | Período mínimo, entrega, cidades atendidas, higienização e pagamento: as dúvidas mais comuns sobre o aluguel de poltrona elétrica para o pós-operatório. |
+| Início | Aluguel de poltrona pós-operatório em Canoas e Porto Alegre | Aluguel de poltrona reclinável elétrica para o pós-operatório de cirurgias em geral, inclusive plásticas. Entrega e retirada em Canoas, Porto Alegre e região. |
+| Quem somos | Quem somos \| BruckerCare, poltronas para pós-operatório | A BruckerCare nasceu da experiência de recuperação da fundadora, Pâmela Zweibrucker. Aluguel de poltronas reclináveis para o pós-operatório em Canoas e região. |
+| A poltrona | Poltrona reclinável elétrica para pós-operatório \| BruckerCare | Poltrona reclinável elétrica para alugar no pós-operatório, com apoio para as pernas e controle. Entrega e retirada em Canoas, Porto Alegre e região. |
+| Perguntas frequentes | Dúvidas sobre aluguel de poltrona pós-operatório \| BruckerCare | Período mínimo, entrega, cidades atendidas, higienização e pagamento: as dúvidas mais comuns sobre a locação de poltrona reclinável para o pós-operatório. |
 | Contato | Contato \| BruckerCare, aluguel de poltrona pós-operatório | Fale com a BruckerCare pelo WhatsApp (51) 99863-1666 e consulte a disponibilidade da poltrona. Entrega e retirada em casa em Canoas, Porto Alegre e região. |
 | Política de privacidade | Política de privacidade \| BruckerCare | Como a BruckerCare trata os seus dados pessoais no site, no WhatsApp e na medição de audiência, de acordo com a LGPD. |
 | Página não encontrada | Página não encontrada \| BruckerCare | Esta página não existe ou mudou de endereço. |
@@ -62,7 +62,7 @@ Todo o texto do site, por página e seção, para revisar com a cliente. Trechos
 ## Página inicial
 
 ### Hero (posts 1, 7 e 12)
-*aluguel de poltronas para o pós-operatório*
+*aluguel de poltronas para o pós-operatório* (este rótulo é o H1 da página)
 
 **Cuidar também é preparar o caminho da recuperação.**
 
@@ -95,7 +95,7 @@ Recuperação não é sobre ter pressa. **É sobre ter suporte.**
 
 **O que é uma poltrona de recuperação?**
 
-É uma poltrona elétrica pensada para cuidar de você em cada momento do dia, com reclinação eletrônica e apoio para as pernas. Ela ajusta a posição de forma simples e confortável e deixa os momentos de descanso mais agradáveis.
+É uma poltrona reclinável elétrica, pensada para cuidar de você em cada momento do pós-cirúrgico. Com apoio para as pernas, ela ajusta a posição de forma simples e confortável e deixa os momentos de descanso mais agradáveis.
 
 **Reclinação elétrica e apoio para as pernas**
 O encosto reclina e o apoio para as pernas sobe pelo comando elétrico. Assim, os movimentos do dia a dia que podem exigir mais do corpo ficam mais práticos.
@@ -112,7 +112,7 @@ Indicador abaixo da foto: a poltrona · reclinação · controle
 *como funciona*
 
 **Como funciona o aluguel**
-Do primeiro contato à retirada, você tem suporte durante todo o processo.
+Do primeiro contato à retirada, você tem suporte durante toda a locação.
 
 01. **Você entra em contato.** Fale com a BruckerCare e conte o que você precisa. A gente orienta você sobre a disponibilidade e as opções de aluguel.
 02. **Entendemos a sua necessidade.** Conversamos sobre o período de recuperação e encontramos a opção mais adequada para esse momento.
@@ -235,9 +235,9 @@ Igual ao da página inicial.
 ### Abertura
 *a poltrona*
 
-**Poltrona elétrica para a recuperação em casa.**
+**Poltrona reclinável elétrica para a recuperação em casa.**
 
-Reclinação eletrônica, apoio para as pernas e ajuste com um toque no controle. Para o período de recuperação, com entrega e retirada em Canoas, Porto Alegre e região.
+Reclinação eletrônica, apoio para as pernas e ajuste com um toque no controle. Para a recuperação pós-cirúrgica, com entrega e retirada em Canoas, Porto Alegre e região.
 
 Botão: Consultar disponibilidade
 
@@ -271,7 +271,7 @@ Igual ao da página inicial.
 
 *perguntas frequentes*
 
-**Dúvidas sobre o aluguel**
+**Dúvidas sobre o aluguel da poltrona**
 
 As respostas para o que mais perguntam antes de alugar a poltrona.
 
@@ -279,6 +279,8 @@ Grupos: Locação · Entrega e retirada · Higiene e preparo · Valores e pagame
 
 **Locação**
 - **Qual é o período mínimo de aluguel?** O período mínimo de aluguel é de 10 dias.
+- **Como faço para alugar a poltrona?** Pelo WhatsApp (51) 99863-1666, com atendimento 24 horas. A gente confere a disponibilidade, combina o período e entrega a poltrona no dia anterior à cirurgia.
+- **Vocês atendem nos fins de semana?** Sim. O atendimento é 24 horas, todos os dias.
 - **Para quais cirurgias a poltrona serve?** A poltrona pode ser usada na recuperação de cirurgias em geral, inclusive plásticas. Quem orienta o que é adequado para o seu caso é sempre a sua equipe médica.
 - **Preciso de indicação médica para alugar?** As orientações sobre a sua recuperação, incluindo o uso de equipamentos de apoio, vêm sempre da sua equipe médica.
 - **Dá para renovar o período de aluguel?** Sim. Se você entender que o pacote de dias escolhido não será suficiente, é possível renovar por mais dias.

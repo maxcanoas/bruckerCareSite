@@ -63,3 +63,17 @@ Pedido do Maxwell: recriar o frontend com um site elegante, fino, delicado e har
 | Cabeçalho | Acompanha o tom da seção que está por baixo. Navegação completa a partir de 1200 px (em 1024 px os links quebravam linha); abaixo disso, "Menu" e o botão do WhatsApp. |
 | Aviso de cookies | Mais curto: "Usamos cookies de análise (Google Analytics) só com a sua permissão.", com Aceitar e Recusar iguais. |
 | Movimento | Continua sem biblioteca. A etiqueta é um pêndulo em JavaScript que só roda enquanto aparece e se mexe. |
+
+## SEO e GEO, 20/10/2026
+
+Análise de busca (Google) e de respostas de IA (ChatGPT, Gemini, Perplexity). Ajustes aprovados pelo Maxwell.
+
+| Tema | Decisão |
+|---|---|
+| Endereço oficial da home | O canonical e o `og:url` da home apontavam para `/index`. Corrigido para `/` no `BaseLayout`; o `.htaccess` redireciona `/index` para `/`. |
+| Palavras-chave | Principal: "aluguel de poltrona pós-operatório" + Canoas e Porto Alegre. Variações que os concorrentes usam e o site não tinha: "poltrona reclinável" (agora em títulos, descrições, H1 de A poltrona e textos), "pós-cirúrgico", "locação". Sem repetir à força: cada termo entra onde a frase continua natural. |
+| H1 da home | O rótulo "aluguel de poltronas para o pós-operatório" virou o H1; a frase grande "Cuidar também é preparar o caminho da recuperação." virou parágrafo. Nada muda no visual. |
+| Títulos | Até cerca de 60 caracteres. A home ficou sem "\| BruckerCare" (o nome do site vem do dado estruturado `WebSite`). |
+| Dados estruturados | `WebSite` na home, `FAQPage` nas perguntas frequentes (sem resultado expandido no Google para sites como este, mas legível para buscadores e IAs), `Person` da Pâmela em Quem somos, ligada à empresa como fundadora. |
+| Perguntas novas | "Como faço para alugar a poltrona?" e "Vocês atendem nos fins de semana?", só com fatos já confirmados. |
+| Depende da cliente | Procedimentos citados por nome, função de levantar ("lift") e lista de cidades só entram com confirmação da cliente (`pendencias.md`). |

@@ -4,20 +4,20 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import FaqItems from "../components/FaqItems.astro";
 import WhatsAppButton from "../components/WhatsAppButton.astro";
-import { questionGroups } from "../data/perguntas";
-import { breadcrumbSchema } from "../lib/schema";
+import { questionGroups, questions } from "../data/perguntas";
+import { breadcrumbSchema, faqSchema } from "../lib/schema";
 ---
 
 <BaseLayout
-  schema={[breadcrumbSchema("Perguntas frequentes", "/perguntas-frequentes")]}
-  title="Perguntas frequentes sobre o aluguel de poltrona | BruckerCare"
-  description="Período mínimo, entrega, cidades atendidas, higienização e pagamento: as dúvidas mais comuns sobre o aluguel de poltrona elétrica para o pós-operatório."
+  schema={[breadcrumbSchema("Perguntas frequentes", "/perguntas-frequentes"), faqSchema(questions)]}
+  title="Dúvidas sobre aluguel de poltrona pós-operatório | BruckerCare"
+  description="Período mínimo, entrega, cidades atendidas, higienização e pagamento: as dúvidas mais comuns sobre a locação de poltrona reclinável para o pós-operatório."
 >
   <section class="faq-page tone-paper" aria-labelledby="faq-page-title">
     <div class="grid faq-page__grid">
       <aside class="faq-page__aside">
         <span class="label">perguntas frequentes</span>
-        <h1 id="faq-page-title" class="faq-page__title heading">Dúvidas sobre <em>o aluguel</em></h1>
+        <h1 id="faq-page-title" class="faq-page__title heading">Dúvidas sobre <em>o aluguel da poltrona</em></h1>
         <p class="faq-page__lead">As respostas para o que mais perguntam antes de alugar a poltrona.</p>
 
         <nav class="faq-page__nav" aria-label="Grupos de perguntas">

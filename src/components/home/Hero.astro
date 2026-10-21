@@ -2,6 +2,8 @@
 // Hero: a poltrona na sala preparada, com a etiqueta kraft pendurada no quadro.
 // Celular: a foto vem primeiro, com o texto pequeno logo abaixo.
 // Desktop: texto à esquerda e a foto em pé (4:5) à direita.
+// O H1 é o rótulo pequeno, que diz o serviço com as palavras da busca; a frase
+// grande é o mote, em parágrafo.
 // A mesma foto vertical serve às duas larguras. Quando existirem as camadas
 // (hero-sala-vazia-mobile + hero-poltrona-recorte-mobile.png, mesmo tamanho e
 // mesmo enquadramento), a sala e a poltrona ganham parallax em dois planos.
@@ -21,10 +23,10 @@ const sizes = "(min-width: 1024px) 40vw, (min-width: 768px) 86vw, 96vw";
 <section class="hero tone-paper" data-hero data-range="exit" aria-labelledby="hero-title">
   <div class="grid hero__grid">
     <div class="hero__text">
-      <p class="label hero__label">aluguel de poltronas para o pós-operatório</p>
-      <h1 id="hero-title" class="hero__title heading">
+      <h1 id="hero-title" class="label hero__label">aluguel de poltronas para o pós-operatório</h1>
+      <p class="hero__title heading">
         Cuidar também é <em>preparar o caminho</em> da recuperação.
-      </h1>
+      </p>
       <p class="hero__lead">
         Poltronas elétricas para a sua recuperação em casa, com entrega e retirada em {company.serviceArea}.
       </p>

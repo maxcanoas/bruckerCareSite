@@ -30,6 +30,18 @@ export const questionGroups: QuestionGroup[] = [
         home: true,
       },
       {
+        id: "como-alugar",
+        question: "Como faço para alugar a poltrona?",
+        answer: [
+          `Pelo WhatsApp ${company.whatsapp.display}, com atendimento 24 horas. A gente confere a disponibilidade, combina o período e entrega a poltrona no dia anterior à cirurgia.`,
+        ],
+      },
+      {
+        id: "fins-de-semana",
+        question: "Vocês atendem nos fins de semana?",
+        answer: ["Sim. O atendimento é 24 horas, todos os dias."],
+      },
+      {
         id: "cirurgias",
         question: "Para quais cirurgias a poltrona serve?",
         answer: [

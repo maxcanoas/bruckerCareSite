@@ -19,7 +19,8 @@ interface Props {
 }
 
 const { title, description, home = false, schema = [], noindex = false } = Astro.props;
-const canonical = new URL(Astro.url.pathname.replace(/(\.html|\/)$/, "") || "/", Astro.site);
+// Endereço limpo: /a-poltrona.html → /a-poltrona, /index.html → /.
+const canonical = new URL(Astro.url.pathname.replace(/(\/index)?(\.html)?\/?$/, "") || "/", Astro.site);
 const ogImage = new URL("/og-image.jpg", Astro.site);
 const structuredData = [businessSchema(), ...schema];
 
