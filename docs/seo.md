@@ -127,8 +127,8 @@ O `llms.txt` (arquivo de resumo para IAs) ficou de fora. Ainda não há sinal de
 
 ## 7. Depois da publicação
 
-- [ ] Search Console: verificar o domínio, enviar `sitemap-index.xml`, pedir indexação da home.
-- [ ] Bing Webmaster Tools: importar do Search Console.
+- [x] Search Console: verificar o domínio, enviar `sitemap-index.xml`, pedir indexação da home. Feito em 22/10/2026; a home e as outras páginas já estavam indexadas.
+- [x] Bing Webmaster Tools: site adicionado e verificado pelo DNS (CNAME), com o sitemap enviado. Feito em 22/10/2026.
 - [ ] Perfil da Empresa no Google: categoria de aluguel de equipamentos médicos (a mais próxima disponível), área atendida, horário 24 horas, link do site, fotos reais; pedir avaliações às clientes.
 - [ ] Testar os dados estruturados no Teste de pesquisa aprimorada do Google (Rich Results Test) e no validador do schema.org.
 - [ ] Depois de algumas semanas, ver no Search Console por quais buscas o site aparece e ajustar títulos e textos.
